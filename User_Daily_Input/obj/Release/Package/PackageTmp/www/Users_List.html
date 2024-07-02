@@ -1,0 +1,714 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Users List</title>
+    <!--Semantic UI CSS-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">-->
+    <link href="../Manday_CDN/semantic.min.css" rel="stylesheet" />
+
+    <!--Bootstrap CSS-->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+    <link href="../Manday_CDN/bootstrap.min.css" rel="stylesheet" />
+
+    <!--Font Awesome CSS-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">-->
+    <!-- <link href="../Manday_CDN/all.min.css" rel="stylesheet" />-->
+    <link href="../fontawesome/css/fontawesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../fontawesome/css/solid.min.css">
+
+    <link rel="stylesheet" type="text/css" href="../fontawesome/css/regular.min.css">
+    <!-- <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'
+           rel='stylesheet'>-->
+    <!--<link href="../Manday_CDN/jquery-ui.css" rel="stylesheet" />-->
+
+    <link href="../jquery-ui/jquery-ui.css" rel="stylesheet" />
+
+    <!--Toastr CSS-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">-->
+    <link href="../Manday_CDN/toastr.min.css" rel="stylesheet" />
+
+    <link href="../css/LoadingSpinner.css" rel="stylesheet" />
+
+    <!--jQuery library-->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+    <script src="../scripts/jquery-3.6.0.js"></script>
+
+    <!--Bootstrap JS-->
+    <!--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+
+    <script src="../Manday_CDN/bootstrap.min.js"></script>
+    <!--jQuery DataTables library-->
+    <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">-->
+    <link href="../Manday_CDN/jquery.dataTables.css" rel="stylesheet" />
+
+    <!-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>-->
+    <script src="../Manday_CDN/jquery.dataTables.min.js"></script>
+
+    <!--Toastr JS-->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>-->
+    <script src="../Manday_CDN/toastr.min.js"></script>
+    <script src="../scripts/moment.js"></script>
+
+    <script src="../jquery-ui/jquery-ui.min.js"></script>
+    <script src="../scripts/dataTables.buttons.min.js"></script>
+    <link href="../scripts/buttons.dataTables.min.css" rel="stylesheet" />
+    <script src="../scripts/buttons.html5.min.js"></script>
+    <script src="../scripts/jszip.min.js"></script>
+    <style type="text/css">
+        ::-webkit-scrollbar {
+            width: 1rem;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #aaa;
+            border-radius: 99vmax;
+            border: 4px solid #ffffff;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgb(255, 255, 255);
+        }
+
+        tr.header {
+            background-color: #3DB5AD !important;
+            color: white;
+        }
+
+        .c {
+            display: none;
+        }
+
+        .header > th {
+            background-color: #3db5ad !important;
+            color: white !important;
+        }
+
+        .ri {
+            text-align: right;
+        }
+
+        tr.footer {
+            background: #F1F1F1 !important;
+            color: red;
+        }
+
+        tr.footer1 {
+            background: #F1F1F1 !important;
+            color: red;
+        }
+
+        body {
+            background-color: #e5e5e5;
+        }
+
+            body > .grid {
+                height: 100%;
+                overflow: auto;
+            }
+
+        .column {
+            margin: 20px;
+        }
+
+        body {
+            background-color: #e5e5e5;
+        }
+
+        table tr td .blue {
+            background: #3399ff;
+            color: #fff;
+            border: none;
+            padding: 4px 7px;
+            border-radius: 3px;
+        }
+
+        table tr td .green {
+            background: #21ba45;
+            color: #fff;
+            border: none;
+            padding: 4px 7px;
+            border-radius: 3px;
+        }
+
+        table tr td .teal {
+            background-color: teal;
+            color: #fff;
+            border: none;
+            padding: 4px 7px;
+            border-radius: 3px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+            color: #fff !important;
+            /*font-weight:bold;*/
+            border: none;
+            background: #2185D0;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background: #21ba45;
+            border: none;
+        }
+
+        body {
+            padding: 1em;
+        }
+
+        body {
+            font-size: 120%;
+        }
+
+        table.dataTable th,
+        table.dataTable td {
+            white-space: nowrap;
+        }
+
+        #editEmployeeModal .modal-header {
+            background-color: #41b9e1;
+        }
+
+            #editEmployeeModal .modal-header button.close {
+                color: red;
+            }
+    </style>
+</head>
+<body>
+    <h3>Users List</h3>
+  
+
+
+    <div class="ui segment" id="divemeritList">
+        <!--style="border-top: 3px solid #2185D0; margin-top: -38px; padding: 10px; display: none;">-->
+        <div style="max-width: 100%; overflow-x: auto;" class="responsive">
+
+            <table id="datatable" style="background-color: #BECED3" class="display nowrap" style="width:100%">
+                <thead>
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Region</th>
+                        <th>Department</th>
+                        <th>EmployeeName</th>
+                        <th>EmployeeNumber</th>
+                        <th>Email</th>
+                        <th>JoinDate</th>
+                        <th>ResignDate</th>
+                        <th>ManDS</th>
+                        <th>Account</th>
+                        <th>Password</th>
+                        <th>Role</th>
+                        <th>Remark</th>
+                        <th>Actions</th>
+
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+
+        <div id="editEmployeeModal" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Users List</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editEmployeeForm">
+                            <!-- Use the same IDs and classes as the main form -->
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="region">REGION</label>
+                                        <select class="form-control" id="region">
+                                            <option value="">Select Region</option>
+                                            <option value="APC">APC</option>
+                                            <option value="APH">APH</option>
+                                            <option value="APE">APE</option>
+                                            <option value="GROUP">GROUP</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="department">DEPARTMENT</label>
+                                        <select class="form-control" id="department">
+                                            <option value="">Select Department</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="man_ds">MAN DAY INPUT</label>
+                                        <select class="form-control" id="man_ds">
+                                            <option value="">Select</option>
+                                            <option value=1>Need to Input</option>
+                                            <option value=0>No Need to Input</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="role">USER ROLE</label>
+                                        <select class="form-control" id="role">
+                                            <option value="">Select Role</option>
+                                            <option value="USER">USER</option>
+                                            <option value="USER_ADMIN">USER_ADMIN</option>
+                                            <option value="ADMIN">ADMIN</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="emp_name">Employee Name</label>
+                                        <input type="text" class="form-control" id="emp_name" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="emp_no">Employee Number</label>
+                                        <input type="text" class="form-control" id="emp_no" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" id="email" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="join_date">Joining Date</label>
+                                        <input type="text" class="form-control" id="join_date" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group" id="M_requirement1">
+                                        <label for="resign_date">Resign Date</label>
+                                        <input type="text" class="form-control" id="resign_date" autocomplete="off">
+                                    </div>
+                                    <!--</div>
+        <div class="col-md-4">-->
+
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group" id="M_req1">
+                                        <label for="username">Username</label>
+                                        <input type="text" class="form-control" id="username" placeholder="APC_1234" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" id="password">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="remark">Remarks</label>
+                                        <input type="text" class="form-control" id="remark" placeholder="APC_1234" autocomplete="off">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="updatebtn" type="button" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+<script src="../Manday_JS/User_List.js"></script>
+
+<!--<script>
+
+    var departmentOptions = {
+        'APC': ['IT-Backoffice', 'MES', 'IT_SW Probation', 'Hardware'],
+        'APH': ['HR&OA部', '数据部'],
+        'APE': ['BackOffice', 'IT_SW Probation', 'Hardware', 'IT-SW', 'IT-HW'],
+        'GROUP': ['PMO']
+    };
+    $(document).ready(function () {
+        
+        Users_details();
+        $("#join_date,#resign_date").datepicker({
+            dateFormat: 'yy-mm-dd',
+            autoclose: true,
+            changeMonth: true,
+            changeYear:true,
+            todayHighlight: true,
+
+        });
+      
+
+
+
+    });
+
+
+
+     var apiURL = 'http://localhost:53943/api/apcnote/';
+  //  var apiURL = 'http://10.3.0.70:9001/api/apcnote/';
+ //   var apiURL = 'http://10.3.0.208:9001/api/apcnote/';
+    var rowData = '';
+    var datatableVariable = '';
+
+    function clearModalFields() {
+        //$('#M_account').val('');
+        //$('#M_right').val('');
+        //$('#M_region').val('');
+        // $('#M_department').val('');
+        $('#department').empty();
+        $('#department').append($('<option>', {
+            value: '',
+            text: 'Select Department'
+        }));
+        //$('#M_role').val('');
+        //$('#M_remark').val('');
+    }
+
+    $('#region').change(function () {
+        
+
+        var selectedRegion = $(this).val();
+
+        var region = {
+            Region: selectedRegion
+        };
+        $.post(apiURL + 'GetDepartmentsByRegion', region, function (response) {
+
+
+            // Clear existing options
+            $('#department').empty();
+
+            // Add default option
+            $('#department').append($('<option>', {
+                value: '',
+                text: 'Select Department'
+            }));
+
+            $.each(response, function (index, department) {
+
+                $('#department').append($('<option>', {
+                    value: department,
+                    text: department
+                }));
+
+            });
+
+
+        }).fail(function (jqxhr, settings, ex) {
+            $(".dimmer").hide();
+            alert("error: " + ex);
+        });
+
+
+    });
+
+    $('#editEmployeeModal').on('hidden.bs.modal', function () {
+
+        // Clear all input fields when modal is closed
+        clearModalFields();
+    });
+
+    function Users_details() {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: '',
+            url: apiURL + 'Get_IT_member_details',
+            success: function (data) {
+                 datatableVariable = $('#datatable').DataTable({
+                    "destroy": "true",
+                    "dataSrc": "",
+                     data: data,
+                     scrollX: true,
+                    columns: [
+
+
+                        //{ 'data': 'ID', visible:false },
+                        {
+                            data: null, title: 'S.No.', visible: true, render: function (data, type, row, meta) {
+                                return meta.row + 1;
+                            }
+                        },
+                        { 'data': 'Region' },
+                        { 'data': 'Department' },
+                        { 'data': 'EmployeeName' },
+                        { 'data': 'EmployeeNumber' },
+                        { 'data': 'Email' },
+                      
+                        {
+                            data: "JoinDate",
+                            render: function (d) {
+                                return moment(d).format("YYYY-MM-DD");
+                            }
+                        },
+
+                        {
+                            data: "ResignDate",
+                            render: function (d) {
+                                if (d) {
+                                    return moment(d).format("YYYY-MM-DD");
+                                } else {
+                                    return ""; 
+                                }
+                            }
+                        },
+                        /* { 'data': 'ManDS' },*/
+                        {
+                            data: "ManDS",
+                            render: function (data) {
+                                return data === 1 ? "Need to Input" : "No Need to Input";
+                            }
+                        },
+                        { 'data': 'Account' },
+                        { 'data': 'Password' },
+                        { 'data': 'Role' },
+                        { 'data': 'Remark' },
+                        {
+                            data: null,
+                            render: function (data, type, row) {
+                                return '<div class="action-group">' +
+                                    '<button class="editBtn btn btn-link" data-id="' + row.ID + '"><i class="fas fa-pencil-alt"></i></button>' +
+                                    '<button class="deleteBtn btn btn-link" data-id="' + row.ID + '"><i class="fas fa-trash-alt"></i></button>' +
+                                    '</div>';
+                            },
+                           
+                            orderable: false,
+                            searchable: false
+                        }
+
+                    ],
+                    dom: 'Bfrtip',
+                    buttons:
+                        [
+                            {
+                                extend: 'excelHtml5',
+                                title: 'Users List Excel',
+                                text: 'Export to excel'
+
+                            }
+                        ]
+                });
+
+            }
+
+        });
+    }
+
+    $('#datatable').on('click', '.editBtn', function () {
+        
+        rowData = datatableVariable.row($(this).closest('tr')).data();
+        console.log(rowData);
+        populateEditForm(rowData); 
+        $('#editEmployeeModal').modal('show'); 
+    });
+
+    function populateEditForm(rowData) {
+        
+      
+        
+        var fillDate = new Date(rowData.JoinDate);
+        var year = fillDate.getFullYear();
+        var month = ('0' + (fillDate.getMonth() + 1)).slice(-2); // Adding 1 because months are zero-based
+        var day = ('0' + fillDate.getDate()).slice(-2);
+        var formattedDate = year + '-' + month + '-' + day;
+
+
+        $('#join_date').val(formattedDate);
+
+        //var fillDate1 = new Date(rowData.ResignDate);
+        //var year1 = fillDate1.getFullYear();
+        //var month1 = ('0' + (fillDate1.getMonth() + 1)).slice(-2); // Adding 1 because months are zero-based
+        //var day1 = ('0' + fillDate1.getDate()).slice(-2);
+        //var formattedDate1 = year1 + '-' + month1 + '-' + day1;
+        //$('#resign_date').val(formattedDate1);
+        if (rowData.ResignDate == null) {
+            $('#resign_date').val(rowData.ResignDate);
+        } else {
+            var fillDate1 = new Date(rowData.ResignDate);
+            var year1 = fillDate1.getFullYear();
+            var month1 = ('0' + (fillDate1.getMonth() + 1)).slice(-2); // Adding 1 because months are zero-based
+            var day1 = ('0' + fillDate1.getDate()).slice(-2);
+            var formattedDate1 = year1 + '-' + month1 + '-' + day1;
+            $('#resign_date').val(formattedDate1);
+        }
+      
+
+
+        $('#username').val(rowData.Account);
+        $('#region').val(rowData.Region);
+      //  $('#department').val(rowData.Department);
+        $('#email').val(rowData.Email);
+        $('#emp_name').val(rowData.EmployeeName);
+        $('#emp_no').val(rowData.EmployeeNumber);
+      //  $('#M_Category').val(rowData.ID);
+      
+       
+        $('#man_ds').val(rowData.ManDS);
+        $('#password').val(rowData.Password);
+      
+        $('#remark').val(rowData.Remark);
+        $('#role').val(rowData.Role);
+
+        //var departments = departmentOptions[rowData.Region] || [];
+        //$('#department').empty().append($('<option>', {
+        //    value: '',
+        //    text: 'Select Department'
+        //}));
+        //departments.forEach(function (department) {
+        //    $('#department').append($('<option>', {
+        //        value: department,
+        //        text: department
+        //    }));
+        //});
+
+        var region_modal = {
+            Region: rowData.Region
+        };
+        $.post(apiURL + 'GetDepartmentsByRegion', region_modal, function (response) {
+
+
+            // Clear existing options
+            //  $('#M_department').empty();
+
+            // Add default option
+            //$('#M_department').append($('<option>', {
+            //    value: '',
+            //    text: 'Select Department'
+            //}));
+            //$('#department,#t_department').append($('<option>', {
+            //    value: 'ALL',
+            //    text: 'ALL'
+            //}));
+            $.each(response, function (index, department) {
+
+                $('#department').append($('<option>', {
+                    value: department,
+                    text: department
+                }));
+
+            });
+            $('#department').val(rowData.Department);
+
+        }).fail(function (jqxhr, settings, ex) {
+            $(".dimmer").hide();
+            alert("error: " + ex);
+        });
+
+      
+    
+
+      
+    }
+
+
+    $('#updatebtn').click(function () {
+
+        if ($('#region').val() == '' || $('#region').val() == null) {
+            alert("Please select Region");
+            $('#region').focus();
+        }
+        //else if ($('#department').val() == '') {
+        //    alert("Please select department");
+        //    $('#department').focus();
+
+        //}
+        else if ($('#man_ds').val() == '') {
+            alert("Please select Man day input type");
+            $('#man_ds').focus();
+
+        } else if ($('#role').val() == '') {
+            alert("Please select User Role");
+            $('#role').focus();
+
+        }
+        else if ($('#emp_name').val() == '') {
+            alert("Please enter Employee Name");
+            $('#emp_name').focus();
+
+        }
+        else if ($('#emp_no').val() == '') {
+            alert("Please enter Employee Number");
+            $('#emp_no').focus();
+
+        }
+        else {
+            var update_info = {};
+            
+
+            update_info.Region = $('#region').val();
+            update_info.Department = $('#department').val();
+            update_info.EmployeeName = $('#emp_name').val();
+            update_info.EmployeeNumber = $('#emp_no').val();
+            update_info.Email = $('#email').val();
+            update_info.JoinDate = $('#join_date').val();
+            update_info.ResignDate = $('#resign_date').val();
+            update_info.ManDS = $('#man_ds').val();
+            update_info.Account = $('#username').val();
+            update_info.Password = $('#password').val();
+            update_info.Remark = $('#remark').val();
+            update_info.Role = $('#role').val();
+            update_info.ID = rowData.ID;
+
+            $.post(apiURL + 'Update_IT_Member_details', update_info, function (response) {
+                
+                console.log(response);
+                if (response == "Success") {
+                    toastr.success('Successfully submitted!', 'Success', { timeOut: 3000 });
+                    $('#editEmployeeModal').modal('hide'); 
+                    Users_details();
+                } else {
+                    alert("somthing error");
+                    $('#editEmployeeModal').modal('hide'); 
+                }
+
+            }).fail(function (jqxhr, settings, ex) {
+                $(".dimmer").hide();
+                alert("error: " + ex);
+            });
+        }
+    });
+    $('#datatable').on('click', '.deleteBtn', function () {
+        
+
+        var delete_info = {};
+        rowData = datatableVariable.row($(this).closest('tr')).data();
+        // var rowId = $(this).data('id');
+        delete_info.ID = rowData.ID;
+       // delete_info.FillDate = rowData.FILL_DATE;
+        delete_info.EmployeeNumber = rowData.EmployeeNumber;
+        var confirmDelete = confirm("Are you sure you want to delete this record?");
+        if (confirmDelete) {
+            $.post(apiURL + 'Delete_IT_member', delete_info, function (response) {
+
+
+                if (response == "Success") {
+                    toastr.success('Record Deleted!', 'Deleted', { timeOut: 3000 });
+
+                    Users_details();
+                } else {
+                    alert("somthing error");
+                }
+
+            }).fail(function (jqxhr, settings, ex) {
+                $(".dimmer").hide();
+                alert("error: " + ex);
+            });
+        }
+    });
+
+</script>-->

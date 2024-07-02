@@ -1,0 +1,412 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic UI Form</title>
+    <!-- Semantic UI CSS -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">-->
+    <link href="../Manday_CDN/semantic.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+    <link href="../Manday_CDN/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">-->
+   <!-- <link href="../Manday_CDN/all.min.css" rel="stylesheet" />-->
+    <link href="../fontawesome/css/fontawesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../fontawesome/css/solid.min.css">
+
+    <link rel="stylesheet" type="text/css" href="../fontawesome/css/regular.min.css">
+    <!-- Toastr CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">-->
+    <link href="../Manday_CDN/toastr.min.css" rel="stylesheet" />
+
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+    <!-- <link href="../Manday_CDN/jquery-ui.css" rel="stylesheet" />-->
+    <link href="../jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <!-- jQuery library -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+    <script src="../scripts/jquery-3.6.0.js"></script>
+
+    <!-- Bootstrap JS -->
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+
+    <script src="../Manday_CDN/bootstrap.min.js"></script>
+    <!-- jQuery DataTables library -->
+    <!--  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">-->
+    <link href="../Manday_CDN/jquery.dataTables.css" rel="stylesheet" />
+
+    <!-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>-->
+
+    <script src="../Manday_CDN/jquery.dataTables.min.js"></script>
+    <!-- Toastr JS -->
+    <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>-->
+
+    <script src="../Manday_CDN/toastr.min.js"></script>
+    <script src="../jquery-ui/jquery-ui.min.js"></script>
+
+    <style type="text/css">
+
+        /* CSS for the form container */
+        .form-container {
+            display: flex;
+            align-items: stretch; /* Align items to stretch vertically */
+        }
+
+        /* CSS for the form image */
+        .form-image {
+            height: auto; /* Automatically adjust height */
+            width: 200px; /* Set width as needed */
+            margin-right: 20px; /* Adjust margin as needed */
+            max-width: 100%;
+        }
+
+        /*  .right.floated {
+            float: ;
+        }*/
+
+        /*.custom-header {
+            color: rgba(179,173,236,255);*/ /* Change color to your desired color */
+        /*}*/
+
+        .header-container {
+            background-color: #e1d5ff; /* Background color for the header */
+            border: 1px solid #ccc; /* Border for the header */
+            padding: 1rem; /* Add padding for space around the header content */
+        }
+
+        .custom-header {
+            margin-top: 0; /* Remove default margin from header */
+        }
+    </style>
+</head>
+<body>
+    <div class="ui container">
+        <div class="header-container">
+            <h2 class="ui center aligned header custom-header">User Registration</h2>
+        </div>
+        <div class="ui segment">
+            <div class="form-container">
+                <!--<img src="https://quicklaunch.io/wp-content/uploads/2019/10/user-registration.png" class="form-image">-->
+                <img src="../assets/images/user-registration-img.png" class="form-image" />
+                <form class="ui form">
+                    <!--<h2 class="ui center aligned header custom-header">User Registration</h2>-->
+                    <br />
+                    <div class="ui four column stackable grid">
+                        <div class="column">
+                            <div class="field">
+                                <label for="region">REGION</label>
+                                <select class="form-control" id="region">
+                                    <option value="">Select Region</option>
+                                    <option value="APC">APC</option>
+                                    <option value="APH">APH</option>
+                                    <option value="APE">APE</option>
+                                    <option value="GROUP">GROUP</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="field" id="departmentContainer">
+                                <label for="department">DEPARTMENT</label>
+                                <select class="form-control" id="department">
+                                    <option value="">Select Department</option>
+                                    <!--<option value="It-Backoffice">It-BackOffice</option>
+                <option value="MES">MES</option>
+                <option value="HR&OA部">HR&OA部</option>
+                <option value="数据部">数据部</option>
+                <option value="BackOffice">BackOffice</option>
+                <option value="IT_SW Probation">IT-S/W_Probation</option>
+                <option value="Hardware">Hardware</option>
+                <option value="IT-SW">IT-SW</option>
+                <option value="IT-HW">IT-HW</option>
+                <option value="PMO">PMO</option>-->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="field">
+                                <label for="man_ds">MAN DAY INPUT</label>
+                                <select class="form-control" id="man_ds">
+                                    <option value="">Select</option>
+                                    <option value=1>Need to Input</option>
+                                    <option value=0>No Need to Input</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="field">
+                                <label for="role">USER ROLE</label>
+                                <select class="form-control" id="role">
+                                    <option value="">Select Role</option>
+                                    <option value="USER">USER</option>
+                                    <option value="USER_ADMIN">USER_ADMIN</option>
+                                    <option value="ADMIN">ADMIN</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="ui two column stackable grid">
+                            <div class="column">
+                                <div class="field">
+                                    <label for="emp_name">Employee Name</label>
+                                    <input type="text" class="form-control" id="emp_name" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="field">
+                                    <label for="emp_no">Employee Number</label>
+                                    <input type="number" class="form-control" id="emp_no" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui two column stackable grid">
+                            <div class="column">
+                                <div class="field">
+                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control" id="email" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="field">
+                                    <label for="join_date">Joining Date</label>
+                                    <input type="text" class="form-control" id="join_date" autocomplete="off">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="ui two column stackable grid">
+                            <div class="column">
+                                <div class="field">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" id="username" placeholder="APC_1234" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password">
+                            </div>
+
+                        </div>
+                        <div class="ui grid">
+                            <div class="row">
+                                <div class="sixteen wide column">
+                                    <div class="right floated">
+                                      
+                                        <button class="ui green button" id="submitbtn" type="submit">Register</button>
+                                     
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<button class="ui primary button" id="submitbtn" type="submit">Submit</button>
+    <button class="ui button" type="reset">Clear</button>-->
+</form>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- jQuery -->
+   <!-- <script>
+       
+
+        var Usr_info = {};
+        var apiURL = 'http://localhost:53943/api/apcnote/';
+     //   var apiURL = 'http://10.3.0.70:9001/api/apcnote/';
+
+     //   var apiURL = 'http://10.3.0.208:9001/api/apcnote/';
+
+        $(document).ready(function () {
+            var departmentOptions = {
+                'APC': ['IT-Backoffice', 'MES', 'IT_SW Probation', 'Hardware'],
+                'APH': ['HR&OA部', '数据部'],
+                'APE': ['BackOffice', 'IT_SW Probation', 'Hardware', 'IT-SW', 'IT-HW'],
+                'GROUP': ['PMO']
+            };
+         
+
+            //$('#region').change(function () {
+            //    var selectedRegion = $(this).val();
+            //    var departments = departmentOptions[selectedRegion] || [];
+
+            //    // Clear existing options
+            //    $('#department').empty();
+
+            //    // Add default option
+            //    $('#department').append($('<option>', {
+            //        value: '',
+            //        text: 'Select Department'
+            //    }));
+
+            //    // Add options for the selected region
+            //    departments.forEach(function (department) {
+            //        $('#department').append($('<option>', {
+            //            value: department,
+            //            text: department
+            //        }));
+            //    });
+
+            //    // Show/hide department dropdown based on selected region
+            //    if (selectedRegion === 'APC' || selectedRegion === 'APH' || selectedRegion === 'APE' || selectedRegion === 'GROUP') {
+            //        $('#departmentContainer').show();
+            //    } else {
+            //        $('#departmentContainer').hide();
+            //    }
+            //});
+
+
+            $('#region').change(function () {
+
+
+                var selectedRegion = $(this).val();
+
+                var region = {
+                    Region: selectedRegion
+                };
+                $.post(apiURL + 'GetDepartmentsByRegion', region, function (response) {
+
+
+                    // Clear existing options
+                    $('#department').empty();
+
+                    // Add default option
+                    $('#department').append($('<option>', {
+                        value: '',
+                        text: 'Select Department'
+                    }));
+
+                    $.each(response, function (index, department) {
+
+                        $('#department').append($('<option>', {
+                            value: department,
+                            text: department
+                        }));
+
+                    });
+
+
+                }).fail(function (jqxhr, settings, ex) {
+                    $(".dimmer").hide();
+                    alert("error: " + ex);
+                });
+
+
+
+            });
+
+
+
+
+            $("#join_date").datepicker({
+                dateFormat: 'yy-mm-dd',
+                autoclose: true,
+                changeMonth: true,
+                changeYear: true,
+                todayHighlight: true,
+
+            });
+        });
+        $('#submitbtn').click(function (event) {
+            
+            event.preventDefault(); // Prevent form submission
+            // Perform form submission logic here...
+
+            // Display toaster notification for successful submission
+            // toastr.success('Successfully submitted!', 'Success', { timeOut: 1000 });
+            if ($('#region').val() == '' || $('#region').val() == null) {
+                alert("Please select Region");
+                $('#region').focus();
+            } 
+
+
+             else if ($('#man_ds').val() == '' || $('#man_ds').val() == null) {
+                alert("Please Select Man day Input ");
+                $('#man_ds').focus();
+            } else if ($('#role').val() == '' || $('#role').val() == null) {
+                alert("Please Select User Role");
+                $('#role').focus();
+            }
+            else if ($('#emp_name').val() == '' || $('#emp_name').val() == null) {
+                alert("Please select emp name");
+                $('#emp_name').focus();
+            } else if ($('#emp_no').val() == '' || $('#emp_no').val() == null) {
+                alert("Please select emp no");
+                $('#emp_no').focus();
+            } else if ($('#email').val() == '' || $('#email').val() == null) {
+                alert("Please select email");
+                $('#email').focus();
+            } else if ($('#join_date').val() == '' || $('#join_date').val() == null) {
+                alert("Please input join date");
+                $('#join_date').focus();
+            } else if ($('#username').val() == '' || $('#username').val() == null) {
+                alert("Please enter username");
+                $('#username').focus();
+            }
+            else if ($('#password').val() == '' || $('#password').val() == null) {
+                alert("Please enter password");
+                $('#password').focus();
+            }
+            else {
+
+                
+                Usr_info.Region = $('#region').val();
+                Usr_info.Department = $('#department').val();
+                Usr_info.ManDS = $('#man_ds').val();
+                Usr_info.Role = $('#role').val();
+
+                Usr_info.EmployeeName = $('#emp_name').val();
+                Usr_info.EmployeeNumber = $('#emp_no').val();
+                Usr_info.Email = $('#email').val();
+                Usr_info.JoinDate = $('#join_date').val();
+                Usr_info.Account = $('#username').val();
+                Usr_info.Password = $('#password').val();
+
+
+                Usr_info.Remark = $('#remark').val();
+
+
+                $.post(apiURL + 'Add_IT_member', Usr_info, function (response) {
+                    
+
+                    if (response == "Success") {
+                        toastr.success('User Added Successfully!', 'Success', { timeOut: 3000 });
+                        clear_input();
+                        //alert('User Added Successfully');
+                        //User_data();
+                    } else if (response == "registered") {
+                        toastr.warning('Username Already exists!', 'Warning', { timeOut: 3000 });
+
+                    }
+                    else {
+                        alert("somthing error");
+                    }
+
+                }).fail(function (jqxhr, settings, ex) {
+                    $(".dimmer").hide();
+                    alert("error: " + ex);
+                });
+            }
+        });
+
+        function clear_input() {
+            $('#region').val('');
+            $('#department').val('');
+            $('#man_ds').val('');
+            $('#role').val('');
+            $('#emp_name').val('');
+            $('#emp_no').val('');
+            $('#email').val('');
+            $('#join_date').val('');
+            $('#username').val('');
+            $('#password').val('');
+        };
+    </script>-->
+</body>
+</html>
+<script src="../Manday_JS/User_Registration.js"></script>

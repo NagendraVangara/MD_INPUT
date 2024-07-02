@@ -1,0 +1,64 @@
+.stickybar {
+    background-color: #00b5ad;
+    padding: 1em;
+}
+
+.sticky {
+    background-color: #00b5ad;
+    padding: 1em;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+}
+
+.rightalign {
+    float: right;
+    color: white;
+}
+
+.divhide {
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 50px !important;
+}
+
+.uidimmer {
+    background-color: #ffffffab !important;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    display: none;
+    z-index: 999;
+}
+
+.fieldleft {
+    text-align: left !important;
+}
+
+.rotate {
+    transition: 0.70s;
+    -webkit-transition: 0.70s;
+    -moz-transition: 0.70s;
+    -ms-transition: 0.70s;
+    -o-transition: 0.70s;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.rotate180 {
+    transition: 0.70s;
+    -webkit-transition: 0.70s;
+    -moz-transition: 0.70s;
+    -ms-transition: 0.70s;
+    -o-transition: 0.70s;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}

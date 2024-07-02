@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>APACHE MANPOWER </title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../assets/vendors/feather/feather.css">
+    <link rel="stylesheet" href="../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../assets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../assets/vendors/typicons/typicons.css">
+    <link rel="stylesheet" href="../assets/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="../assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <!--<link rel="stylesheet" type="text/css" href="../assets/js/select.dataTables.min.css">-->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../assets/css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <!--  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">-->
+    <!--<link href="../Manday_CDN/all6.min.css" rel="stylesheet" />-->
+    <link href="../fontawesome/css/fontawesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../fontawesome/css/solid.min.css">
+
+    <link rel="stylesheet" type="text/css" href="../fontawesome/css/regular.min.css">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">-->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>-->
+
+    <script src="../Manday_CDN/jquery-3.6.4.min.js"></script>
+
+    <script src="../assets/vendors/js/vendor.bundle.base.js"></script>
+
+
+
+
+    <style>
+        .nav-item.active > a {
+            background-color: #f8f9fa !important; /* Background color of active menu item */
+            color: #000 !important; /* Text color of active menu item */
+            font-weight: bold !important; /* Font weight of active menu item */
+            /* Add other styles as needed */
+        }
+
+        /* Styles for modal */
+        .ui.modal {
+            width: 500px; /* Adjust width as needed */
+        }
+
+        /* Styles for "X" mark */
+        .close.icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        /* Styles for buttons */
+        .actions {
+            text-align: right;
+            padding: 15px 0;
+        }
+
+        .ui.button {
+            margin-left: 10px;
+        }
+
+        /* Styles for cancel button */
+        .ui.cancel.button {
+            background-color: #ccc;
+            color: #000;
+        }
+
+        /* Styles for submit button */
+        .ui.submit.button {
+            background-color: #2185d0; /* Blue color */
+            color: #fff;
+        }
+
+
+        #myProfileModal .modal-header {
+            background-color: #7fa7db;
+            color: #ffffff;
+            border-bottom: none;
+        }
+
+        /* Custom CSS for modal title */
+        #myProfileModal .modal-title {
+            color: #ffffff; /* Change to your desired title color */
+        }
+
+       
+
+    </style>
+</head>
+
+<body class="with-welcome-text">
+    <div class="container-scroller">
+
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+                <div class="me-3">
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+                        <span class="icon-menu"></span>
+                    </button>
+                </div>
+                <div>
+                    <a class="navbar-brand brand-logo">
+                        <!--<img src="" alt="logo" />-->
+                        <img src="../assets/images/222.png" />
+                    </a>
+                    <a class="navbar-brand brand-logo-mini">
+                        <!--<img src="../assets/images/logo-mini.svg" alt="logo" />-->
+                        <img src="../assets/images/2222.png" alt="logo" />
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-top">
+                <ul class="navbar-nav">
+                    <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
+                        <!--<h1 class="welcome-text" id="greeting">Good Morning, <span class="text-black fw-bold" id="empname"></span></h1>-->
+                        <h1 class="welcome-text" id="greeting">Good Morning,</h1>
+                        <!--<h1 class="welcome-text" id="empname"></h1>-->
+                        <h3 class="welcome-sub-text"> <span class="text-primary fw-bold" id="empname"></span></h3>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <!--<li class="nav-item dropdown d-none d-lg-block">
+                        <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#"
+                           data-bs-toggle="dropdown" aria-expanded="false"> Select Category </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
+                             aria-labelledby="messageDropdown">
+                            <a class="dropdown-item py-3">
+                                <p class="mb-0 font-weight-medium float-left">Select category</p>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-item-content flex-grow py-2">
+                                    <p class="preview-subject ellipsis font-weight-medium text-dark">Bootstrap Bundle </p>
+                                    <p class="fw-light small-text mb-0">This is a Bundle featuring 16 unique dashboards</p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-item-content flex-grow py-2">
+                                    <p class="preview-subject ellipsis font-weight-medium text-dark">Angular Bundle</p>
+                                    <p class="fw-light small-text mb-0">Everything you’ll ever need for your Angular projects</p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-item-content flex-grow py-2">
+                                    <p class="preview-subject ellipsis font-weight-medium text-dark">VUE Bundle</p>
+                                    <p class="fw-light small-text mb-0">Bundle of 6 Premium Vue Admin Dashboard</p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-item-content flex-grow py-2">
+                                    <p class="preview-subject ellipsis font-weight-medium text-dark">React Bundle</p>
+                                    <p class="fw-light small-text mb-0">Bundle of 8 Premium React Admin Dashboard</p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>-->
+                    <!--<li class="nav-item d-none d-lg-block">
+                        <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
+                            <span class="input-group-addon input-group-prepend border-right">
+                                <span class="icon-calendar input-group-text calendar-icon"></span>
+                            </span>
+                            <input type="text" class="form-control">
+                        </div>
+                    </li>-->
+                    <!--<li class="nav-item">
+                        <form class="search-form" action="#">
+                            <i class="icon-search"></i>
+                            <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+                        </form>
+                    </li>-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+                            <i class="icon-bell"></i>
+                            <span class="count"></span>
+                        </a>
+                        <!--<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
+                             aria-labelledby="notificationDropdown">
+                            <a class="dropdown-item py-3 border-bottom">
+                                <p class="mb-0 font-weight-medium float-left">You have 4 new notifications </p>
+                                <span class="badge badge-pill badge-primary float-right">View all</span>
+                            </a>
+                            <a class="dropdown-item preview-item py-3">
+                                <div class="preview-thumbnail">
+                                    <i class="mdi mdi-alert m-auto text-primary"></i>
+                                </div>
+                                <div class="preview-item-content">
+                                    <h6 class="preview-subject fw-normal text-dark mb-1">Application Error</h6>
+                                    <p class="fw-light small-text mb-0"> Just now </p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item preview-item py-3">
+                                <div class="preview-thumbnail">
+                                    <i class="mdi mdi-settings m-auto text-primary"></i>
+                                </div>
+                                <div class="preview-item-content">
+                                    <h6 class="preview-subject fw-normal text-dark mb-1">Settings</h6>
+                                    <p class="fw-light small-text mb-0"> Private message </p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item preview-item py-3">
+                                <div class="preview-thumbnail">
+                                    <i class="mdi mdi-airballoon m-auto text-primary"></i>
+                                </div>
+                                <div class="preview-item-content">
+                                    <h6 class="preview-subject fw-normal text-dark mb-1">New user registration</h6>
+                                    <p class="fw-light small-text mb-0"> 2 days ago </p>
+                                </div>
+                            </a>
+                        </div>-->
+                    </li>
+                    <!--<li class="nav-item dropdown">
+                        <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="icon-mail icon-lg"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
+                             aria-labelledby="countDropdown">
+                            <a class="dropdown-item py-3">
+                                <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
+                                <span class="badge badge-pill badge-primary float-right">View all</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <img src="../assets/images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
+                                </div>
+                                <div class="preview-item-content flex-grow py-2">
+                                    <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
+                                    <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <img src="../assets/images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
+                                </div>
+                                <div class="preview-item-content flex-grow py-2">
+                                    <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
+                                    <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <img src="../assets/images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
+                                </div>
+                                <div class="preview-item-content flex-grow py-2">
+                                    <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
+                                    <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>-->
+                    <li class="nav-item dropdown d-none d-lg-block user-dropdown">
+                        <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="img-xs rounded-circle" src="../assets/images/faces/face8.jpg" alt="Profile image">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                            <div class="dropdown-header text-center">
+                                <img class="img-md rounded-circle" src="../assets/images/faces/face8.jpg" alt="Profile image">
+                                <p class="mb-1 mt-3 font-weight-semibold" id="username"></p>
+                                <p class="fw-light text-muted mb-0" id="email"></p>
+                            </div>
+                            <a class="dropdown-item" id="my_profile">
+                                <i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Update Password
+                            </a>
+                            <!--<a class="dropdown-item">
+                                <i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
+                                Messages
+                            </a>
+                            <a class="dropdown-item">
+                                <i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>
+                                Activity
+                            </a>
+                            <a class="dropdown-item">
+                                <i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>
+                                FAQ
+                            </a>-->
+                            <a class="dropdown-item" id="sign_out"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+                        </div>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                        data-bs-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_settings-panel.html -->
+            <!--<div class="theme-setting-wrapper">
+
+            <!-- To do section tab ends -->
+            <!-- chat tab ends -->
+            <!--</div>
+            </div>-->
+            <!-- partial -->
+            <!-- partial:partials/_sidebar.html -->
+
+
+
+
+
+
+
+
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item" id="dashboard">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#Sidebar_bootstrap.html" aria-expanded="false" id="s_bar">
+                            <i class="mdi mdi-grid-large menu-icon"></i>
+                            <span class="menu-title">Dashboard by Reg/Dept</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" id="Dashboard2">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#auth" id="Dashboard2" aria-expanded="false" aria-controls="auth">
+                            <!--<i class="menu-icon mdi mdi-account-circle-outline"></i>-->
+                            <i class="menu-icon mdi mdi-chart-bar"></i>
+                            <span class="menu-title">Dashboard by trend</span>
+                        </a>
+                    </li>
+                    <!--<li class="nav-item nav-category">UI Elements</li>-->
+                    <li class="nav-item" id="dailyInput">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" id="profile">
+                            <i class="menu-icon mdi mdi-floor-plan"></i>
+                            <span class="menu-title">Daily Input</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+
+                    </li>
+
+
+                    <!--<li class="nav-item nav-category">Forms and Datas</li>-->
+                    <li class="nav-item" id="user_reg">
+                        <a class="nav-link" data-bs-toggle="collapse" id="exm" href="#formele" aria-expanded="false"
+                           aria-controls="form-elements">
+                            <i class="menu-icon mdi mdi-card-text-outline"></i>
+                            <span class="menu-title">User Registration</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+
+                    </li>
+                    <li class="nav-item" id="project_lst">
+                        <a class="nav-link" data-bs-toggle="collapse" id="project" href="#charts" aria-expanded="false" aria-controls="charts">
+                            <i class="menu-icon mdi mdi-chart-line"></i>
+                            <span class="menu-title">Projects List</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+
+                    </li>
+                    <li class="nav-item" id="rights_page">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#tables" id="right_lst" aria-expanded="false" aria-controls="tables">
+                            <i class="menu-icon mdi mdi-table"></i>
+                            <span class="menu-title">Rights List</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+
+                    </li>
+                    <li class="nav-item" id="userList">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#icons" id="users_lst" aria-expanded="false" aria-controls="icons">
+                            <i class="menu-icon mdi mdi-layers-outline"></i>
+                            <span class="menu-title">Users List</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+
+                    </li>
+                    <li class="nav-item" id="holidayList">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#icons" id="users_lst" aria-expanded="false" aria-controls="icons">
+                            <i class="menu-icon mdi mdi-calendar"></i>
+                            <span class="menu-title">Holiday List</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+
+                    </li>
+                    <!--<li class="nav-item nav-category">pages</li>-->
+                    <li class="nav-item" id="reports_page">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#auth" id="reports" aria-expanded="false" aria-controls="auth">
+                            <i class="menu-icon mdi mdi-file-document"></i>
+                            <span class="menu-title">Reports</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+
+                    </li>
+                    <li class="nav-item" id="access_page">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#auth" id="access" aria-expanded="false" aria-controls="auth">
+                            <i class="menu-icon mdi mdi-account-circle-outline"></i>
+                            <span class="menu-title">Access</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+
+
+
+
+
+
+
+
+            <!-- partial -->
+            <iframe frameborder="0" width="100%" id="ifrm" seamless="" scrolling="auto"></iframe>
+            <!--<div class="main-panel">
+                <div class="content-wrapper">
+
+                </div>
+
+            </div>-->
+            <!-- main-panel ends -->
+        </div>
+        <input type="hidden" id="userid" />
+        <!-- page-body-wrapper ends -->
+    </div>
+
+    <div id="myProfileModal" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Password</h5>
+                    <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="mb-3 position-relative">
+                        <label for="newPassword" class="form-label">New Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="newPassword">
+                            <!--<button class="btn btn-outline-secondary" type="button" id="toggleNewPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>-->
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirmPassword">
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" id="pswd_update" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="logoutModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#b2e2f5;">
+                    <h5 class="modal-title" style="font-size:22px">Ready to leave ?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="two fields">
+
+                            <div class="five wide field">
+                                <label for="message-text" style="font-size:20px" class="col-form-label">Select "Logout" below if you are ready to end your current session.</label>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="Logout" class="btn btn-primary">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/off-canvas.js"></script>
+    <script src="../assets/js/template.js"></script>
+
+
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>-->
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+    <!--<script src="../assets/vendors/js/vendor.bundle.base.js"></script>-->
+    <!--<script src="../assets/js/off-canvas.js"></script>-->
+    <!--<script src="../assets/js/template.js"></script>-->
+    <!--<script type="text/javascript">
+        //after logout disable back
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>-->
+    <script>
+        $(function () {
+            $.ajaxSetup({
+                cache: false,
+                headers: {
+                    'Expires': '-1',
+                    'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+                    'Pragma': 'no-cache'
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+<script src="../Manday_JS/Sidebar.js"></script>
+
+<!--<script type="text/javascript">
+    var apiURL = 'http://localhost:53943/api/apcnote/';
+  //  var apiURL = 'http://10.3.0.70:9001/api/apcnote/';
+
+  //  var apiURL = 'http://10.3.0.208:9001/api/apcnote/';
+    var role = '';
+    //var userId = '';
+    var qsParm = new Array();
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+        document.addEventListener("backbutton", function (e) {
+            e.preventDefault();
+        }, false);
+    }
+
+    function isPhoneGap() {
+        return (window.cordova || window.PhoneGap || window.phonegap) &&
+            /^file:\/{3}[^\/]/i.test(window.location.href) &&
+            /ios|iphone|ipod|ipad|android/i.test(navigator.userAgent);
+    }
+
+    function qs() {
+        
+        var query = window.location.search.substring(1);
+        var parms = query.split('&');
+        for (var i = 0; i < parms.length; i++) {
+            var pos = parms[i].indexOf('=');
+            if (pos > 0) {
+                var key = parms[i].substring(0, pos);
+                var val = parms[i].substring(pos + 1);
+                qsParm[key] = val;
+            }
+        }
+        if (parms.length > 0) {
+            $("#userid").val(atob(qsParm["userid"]));
+            return true;
+        } else {
+            window.location.href = 'index.html';
+            return false;
+        }
+    }
+
+    function getQueryParameterValue(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        /* const otherParam = urlParams.get('otherparam');*/
+        return urlParams.get(name);
+    }
+
+
+    var idleMax = 10 * 60 * 1000;  // 10 minutes in milliseconds
+    var lastMove = new Date().getTime();
+    var idleInterval = setInterval(timerIncrement, 1000);
+
+    function handleMouseMove(event) {
+        lastMove = new Date().getTime();
+        idleMax = (new Date().getTime() - lastMove) < idleMax ? 10 * 60 * 1000 : idleMax;
+        clearInterval(idleInterval);
+        idleInterval = setInterval(timerIncrement, 1000);
+        window.idleInterval = idleInterval;
+        idleMax = 10 * 60 * 1000;  // Reset back to 10 minutes
+    }
+
+
+    function startTimer() {
+        clearInterval(idleInterval);
+        idleInterval = setInterval(timerIncrement, 1000);
+    }
+    function timerIncrement() {
+        var currentTime = new Date().getTime();
+        var idleTime = currentTime - lastMove;
+        if (idleTime > idleMax) {
+            clearInterval(idleInterval);
+
+            // Ask for confirmation before redirecting
+            var confirmed = confirm("Are you sure you want to leave this page?");
+            if (confirmed) {
+                // Clear cookies and session storage
+                document.cookie = 'Visit=; expires=' + new Date(0).toUTCString() + '; path=/FinalVertozz/';
+                document.cookie = 'Visit=; expires=' + new Date(0).toUTCString();
+                sessionStorage.clear();
+                // Redirect to index.html
+                window.location.href = 'index.html';
+            } else {
+                // If user cancels, resume timer or perform any other action
+                startTimer();
+            }
+        }
+    }
+
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    $(document).ready(function () {
+       // qs();
+       
+        var userID = sessionStorage.getItem('userID');
+        $("#userid").val(userID);
+        var token = getCookie("token");
+        if (!token || !userID) {
+            window.location.href = 'index.html';
+        }
+        
+        //userId = getQueryParameterValue('userid');
+        //localStorage.setItem('userId', userId);
+      //  $('#ifrm').attr('src', 'Dashboard.html?userid=' + btoa($("#userid").val()));
+        handleSidebarItemClick('dashboard', 'Dashboard.html?userid=' + btoa($("#userid").val()));
+        User_check();
+      //  User_role();
+       // Input_Check();
+        var currentHour = new Date().getHours();
+
+        // Get the greeting based on the current hour
+        var greeting = getGreeting(currentHour);
+
+        // Display the greeting in the HTML element
+        document.getElementById('greeting').innerText = greeting;
+
+        // Function to get the appropriate greeting based on the hour
+        function getGreeting(hour) {
+            if (hour >= 5 && hour < 12) {
+                return 'Good Morning';
+            } else if (hour >= 12 && hour < 16) {
+                return 'Good Afternnon';
+            } else {
+                return 'Good Evening';
+            }
+        }
+        $(document).mousemove(function (event) {
+            lastMove = new Date().getTime();
+        });
+
+
+        startTimer();
+       
+
+
+
+       /* document.addEventListener("mousemove", handleMouseMove, false);*/
+        $('#toggleNewPassword').click(function () {
+            var passwordField = $('#newPassword');
+            var passwordFieldType = passwordField.attr('type');
+
+            // Toggle password field visibility
+            if (passwordFieldType === 'password') {
+                passwordField.attr('type', 'text');
+            } else {
+                passwordField.attr('type', 'password');
+            }
+        });
+     
+
+    });
+
+
+    $('.nav-link').click(function () {
+        // Remove 'active' class from all menu items
+        $('.nav-link').removeClass('active');
+        // Add 'active' class to the clicked menu item
+        $(this).addClass('active');
+    });
+    $('#Logout').click(function () {
+        var expirationTime = new Date();
+        expirationTime.setTime(expirationTime.getTime() - 1);
+        document.cookie = "token=;expires=" + expirationTime.toUTCString() + ";path=/";
+        localStorage.clear();
+        window.location.href = 'index.html';
+    });
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    $('#sign_out').click(function () {
+        $('#logoutModal').modal('show');
+    });
+
+    $('#Logout').click(function () {
+        var expirationTime = new Date();
+        expirationTime.setTime(expirationTime.getTime() - 1);
+        document.cookie = "token=;expires=" + expirationTime.toUTCString() + ";path=/";
+        localStorage.clear();
+        window.location.href = 'index.html';
+    });
+
+    function loadPage(pageUrl) {
+        
+        // Update the src attribute of the iframe to load the specified page
+        $('#ifrm').attr('src', pageUrl);
+    }
+
+    function handleSidebarItemClick(menuItemId, pageUrl) {
+        
+        
+        $('.nav-item').removeClass('active');
+        // Add active class to the clicked menu item
+        $('#' + menuItemId).addClass('active');
+       
+        $('#ifrm').attr('src', pageUrl);
+    }
+
+
+
+    $('#s_bar').click(function () {
+        //$('#ifrm').attr('src', 'Dashboard.html?userid=' + btoa($("#userid").val()));
+        handleSidebarItemClick('dashboard', 'Dashboard.html?userid=' + btoa($("#userid").val()));
+        //dashboard
+    });
+    $('#profile').click(function () {
+        
+       // console.log($("#userid").val());
+        //menuActive('profile');
+        $('#ifrm').attr('src', 'Daily_input.html?userid=' + btoa($("#userid").val()));
+        // Store the current src of the #ifrm element in localStorage
+        //localStorage.setItem('currentSrc', $('#ifrm').attr('src'));
+       
+        handleSidebarItemClick('dailyInput', 'Daily_input.html?userid=' + btoa($("#userid").val()));
+    });
+    $('#exm').click(function () {
+     //   $('#ifrm').attr('src', 'SemanticUI_form.html');
+        //   $('#ifrm').attr('src', 'User_reg.html?userid=' + btoa($("#userid").val()));
+        handleSidebarItemClick('user_reg', 'User_Registration.html');
+    });
+
+    $('#project').click(function () {
+       // $('#ifrm').attr('src', 'Projects_List.html?userid=' + btoa($("#userid").val()));
+        //$('#ifrm').attr('src', 'Projects_List.html');
+        handleSidebarItemClick('project_lst', 'Projects_List.html?userid=' + btoa($("#userid").val()));
+
+    });
+
+    $('#right_lst').click(function () {
+      //  $('#ifrm').attr('src', 'Rights_List.html?userid=' + btoa($("#userid").val()));
+      //  $('#ifrm').attr('src', 'Rights_List.html');
+        handleSidebarItemClick('rights_page', 'Rights_List.html');
+    });
+    $('#users_lst').click(function () {
+       // $('#ifrm').attr('src', 'Users_List.html?userid=' + btoa($("#userid").val()));
+       // $('#ifrm').attr('src', 'Users_List.html');
+        handleSidebarItemClick('userList', 'Users_List.html');
+    });
+    $('#reports').click(function () {
+        // $('#ifrm').attr('src', 'Users_List.html?userid=' + btoa($("#userid").val()));
+       // $('#ifrm').attr('src', 'Reports.html');
+      //  $('#ifrm').attr('src', 'Reports.html?userid=' + btoa($("#userid").val()));
+        handleSidebarItemClick('reports_page', 'Reports.html?userid=' + btoa($("#userid").val()));
+
+
+    });
+    $('#access').click(function () {
+        // $('#ifrm').attr('src', 'Users_List.html?userid=' + btoa($("#userid").val()));
+       // $('#ifrm').attr('src', 'AccessPage.html');
+        handleSidebarItemClick('access_page', 'AccessPage.html');
+    });
+
+    $('#holidayList').click(function () {
+       // $('#ifrm').attr('src', 'Holiday_List.html?userid=' + btoa($("#userid").val()));
+        handleSidebarItemClick('holidayList', 'Holiday_List.html?userid=' + btoa($("#userid").val()));
+
+    });
+
+    $('#my_profile').click(function () {
+        $('#myProfileModal').modal('show');
+    });
+
+
+    function User_check() {
+        
+        var userData = {};
+        userData.ACCOUNT = $("#userid").val();
+       // userData.ACCOUNT = userId;
+      
+        $.post(apiURL + 'Get_User_Details', userData, function (response) {
+            
+           // console.log(response);
+            var username = response[0].EmployeeName;
+            var email = response[0].Email;
+           
+            document.getElementById('username').textContent = `${username}`;
+           
+            document.getElementById('email').textContent = `${email}`;
+            document.getElementById('empname').innerText = username;
+            role = response[0].Role;
+            if (role == "ADMIN") {
+                $('#dashboard').show();
+                $('#dailyInput').show();
+                $('#user_reg').show();
+                $('#reports_page').show();
+
+
+                $('#project_lst').show();
+                $('#rights_page').show();
+                $('#userList').show();
+
+                $('#access_page').show();
+                $('#holidayList').show();
+            }
+            else if (role == "USER_ADMIN") {
+
+                $('#dashboard').show();
+               
+                $('#user_reg').hide();
+                $('#reports_page').show();
+                $('#dailyInput').show();
+
+                $('#project_lst').hide();
+                $('#rights_page').hide();
+                $('#userList').hide();
+                $('#access_page').hide();
+                $('#holidayList').hide();
+
+            }
+
+            else {
+
+                $('#dashboard').show();            
+                $('#user_reg').hide();
+                $('#reports_page').show();
+                $('#dailyInput').show();
+
+                $('#project_lst').hide();
+                $('#rights_page').hide();
+                $('#userList').hide();
+                $('#access_page').hide();
+                $('#holidayList').hide();
+            }
+
+
+        }).fail(function (jqxhr, settings, ex) {
+            $(".dimmer").hide();
+            alert("error: " + ex);
+        });
+        //}
+    };
+
+
+    
+
+
+
+    function Input_Check() {
+        
+        // userData.ACCOUNT = userId;
+
+        $.post(apiURL + 'CheckForMissingInput1', function (response) {
+
+            console.log(response);
+           
+
+        }).fail(function (jqxhr, settings, ex) {
+            $(".dimmer").hide();
+            alert("error: " + ex);
+        });
+        //}
+    };
+
+
+
+
+    $('#pswd_update').click(function () {
+        
+        if ($('#newPassword').val() == '') {
+            alert('Enter new Password');
+            $('#newPassword').focus();
+        } else if ($('#confirmPassword').val() == '') {
+            alert('Enter Confirm Password');
+            $('#confirmPassword').focus();
+        } else if ($('#newPassword').val() != $('#confirmPassword').val()) {
+
+            alert('Password and Confirm Password Not Matched');
+        } else {
+            var updteData = {};
+            updteData.ACCOUNT = $("#userid").val();
+            updteData.PASSWORD = $('#confirmPassword').val();
+
+            $.post(apiURL + 'UpdatePasword', updteData, function (response) {
+
+                $('.dimmer').hide();
+                if (response == 'Success') {
+
+                    alert('Successfully Password Updated ');
+
+                    $('#myProfileModal').modal('hide');
+                    $('#newPassword').val('');
+                    $('#confirmPassword').val('');
+                }
+                else {
+                    alert('Error');
+
+                }
+
+
+            });
+        }
+    });
+
+
+</script>-->

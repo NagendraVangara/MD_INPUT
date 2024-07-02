@@ -1,0 +1,742 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Users List</title>
+
+    <meta charset="utf-8" />
+    <title> User Menu </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">-->
+    <link href="../Manday_CDN/semantic.min.css" rel="stylesheet" />
+
+    <!--Bootstrap CSS-->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+    <link href="../Manday_CDN/bootstrap.min.css" rel="stylesheet" />
+
+    <!--Font Awesome CSS-->
+    <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">-->
+    <!--<link href="../Manday_CDN/all.min.css" rel="stylesheet" />-->
+    <link href="../fontawesome/css/fontawesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../fontawesome/css/solid.min.css">
+
+    <link rel="stylesheet" type="text/css" href="../fontawesome/css/regular.min.css">
+    <!-- <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'
+           rel='stylesheet'>-->
+    <!--<link href="../Manday_CDN/jquery-ui.css" rel="stylesheet" />-->
+    <link href="../jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link href="../Manday_CDN/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="../scripts/buttons.dataTables.min.css" rel="stylesheet" />
+    <!--Toastr CSS-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">-->
+
+    <link href="../Manday_CDN/toastr.min.css" rel="stylesheet" />
+    <link href="../css/LoadingSpinner.css" rel="stylesheet" />
+
+    <!--jQuery library-->
+    <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+
+    <script src="../scripts/jquery-3.6.0.js"></script>
+    <!--Bootstrap JS-->
+    <!--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+    <script src="../Manday_CDN/bootstrap.min.js"></script>
+
+    <!--jQuery DataTables library-->
+    <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">-->
+    <!-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>-->
+    <script src="../Manday_CDN/jquery.dataTables.min.js"></script>
+    <!--Toastr JS-->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>-->
+    <script src="../Manday_CDN/toastr.min.js"></script>
+
+    <script src="../scripts/moment.js"></script>
+
+    <script src="../jquery-ui/jquery-ui.min.js"></script>
+    <script src="../scripts/dataTables.buttons.min.js"></script>
+
+    <script src="../scripts/buttons.html5.min.js"></script>
+    <script src="../scripts/jszip.min.js"></script>
+    <style>
+        body, html {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            /*background-color:honeydew;*/
+        }
+
+        fieldset {
+            width: 500px;
+            align-content: center;
+            border: 2px solid black;
+        }
+
+            fieldset:focus-within {
+                border-color: lightpink;
+            }
+
+        [type=password], input[type=text], input[type=email], .Role, .Company, #active, #active2, #u_active2, #u_active {
+            width: 40%;
+            padding: 10px;
+            margin: 5px 0 22px 0;
+            border: hidden;
+            background: #f0f2f5;
+        }
+
+            [type=password]:focus, input[type=text]:focus, input[type=email]:focus, .Role:focus, .Company:focus, #active:focus, #active2:focus, #u_active2:focus, #u_active:focus {
+                background-color: #f7dee2;
+                outline: none;
+            }
+
+        #btnSubmit, #btnSubmit2, #btnUpdate, #btnUpdate2, #close {
+            background: none;
+            text-decoration: none;
+            color: black;
+            box-shadow: 0px 0px 0px 2px white;
+            border-radius: 3px;
+            padding: 5px 2em;
+            transition: 0.5s;
+            float: none;
+        }
+
+            #btnSubmit:hover, #btnSubmit2:hover, #btnUpdate:hover, #btnUpdate2:hover {
+                background: #8aed96;
+                color: black;
+                transition: 0.5s;
+            }
+
+            #close:hover {
+                background: #ed6767;
+                color: black;
+                transition: 0.5s;
+            }
+
+        #btnRegister {
+            background-color: #f6f79f;
+            color: black;
+            font: bold 35px;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            /*padding: 5px;*/
+        }
+
+        .custom-delete-btn {
+            color: red;
+        }
+
+        #submit {
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            position: relative; /* Change to relative positioning */
+            top: 0.07in;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="ui stacked segment" id="projectForm">
+        <h2>APACHE GROUP HOLIDAYS LIST</h2>
+        <br />
+        <div class="ui medium form" id="">
+            <div class="eight fields">
+                <div class="three wide field">
+                    <label>Region</label>
+                    <select id="region" class="form-control input">
+                        <option value="">Select Region</option>
+                        <option value="ALL">ALL</option>
+                        <option value="APC">APC</option>
+                        <option value="APH">APH</option>
+                        <option value="APE">APE</option>
+                        <option value="GROUP">GROUP</option>
+                    </select>
+                </div>
+
+
+                <div class="three wide field ">
+                    <label>Holiday Type</label>
+                    <select id="h_type" class="form-control input">
+                        <option value="">Select Holiday Type</option>
+                        <option value="1">SUNDAY/SATURDAY</option>
+                        <option value="2">SPECIAL HOLIDAY</option>
+                        <option value="3">Not-Full Day HOLIDAY</option>
+
+                    </select>
+
+                </div>
+                <div class="two wide field " id="holidayLengthField" style="display: none;">
+                    <label>Holiday Length</label>
+                    <input type="number" id="h_len" class="form-control" autocomplete="off">
+
+                </div>
+                <div class="three wide field ">
+                    <label>Holiday Date</label>
+                    <input type="text" id="e_date" class="form-control" placeholder="YYYY-MM-DD" autocomplete="off">
+
+                </div>
+
+
+                <!--<div class="two wide field ">
+        <label>Exit Date</label>
+        <input type="text" id="exit_date" class="form-control" autocomplete="off" >
+
+    </div>-->
+                <!--<div class="two wide field">
+        <label>Remark</label>
+        <input type="text" id="emp_no" class="form-control" autocomplete="off" >
+
+    </div>-->
+                <button id="submit" class="btn btn-primary mt-3">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="updateModal" tabindex="-1" style="text-align:center">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #C8A2C8">
+                    <h5 class="modal-title" style="font-size:22px"> Update Holiday </h5>
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                    <span aria-hidden="true">&times;</span>-->
+                </div>
+                <div class="modal-body" style="background-color: #fcfcfb">
+                    <form>
+                        <div class="two fields">
+
+
+                            <span class="top aligned left aligned">
+                                <strong> REGION: </strong> &nbsp;
+                                <select class="Company" name="company" id="M_region" disabled>
+                                    <option value=""> Select region </option>
+                                    <option value="APC">APC</option>
+                                    <option value="APH">APH</option>
+                                    <option value="APE">APE</option>
+                                    <option value="GROUP">GROUP</option>
+
+                                </select>
+                            </span><br />
+                            <span class="top aligned left aligned">
+                                <strong> HOLIDAY TYPE: </strong>
+                                <select class="Role" id="M_type">
+                                    <option value="">Select Holiday Type</option>
+                                    <option value="1">SUNDAY/SATURDAY</option>
+                                    <option value="2">SPECIAL HOLIDAY</option>
+                                    <option value="3">Not-Full Day HOLIDAY</option>
+
+                                </select>
+                            </span><br />
+
+                            <span class="top aligned left aligned">
+                                <strong> HOLIDAY DATE: </strong> <input type="text" class="text" id="M_date">
+                            </span><br />
+
+
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnUpdate" class="btn btn-primary"> Update </button> &nbsp;
+                    <button type="button" id="close" class="btn btn-secondary " data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <div class="ui segment">
+        <table id="RegistrationGrid" bgcolor="" class="display nowrap" style="width: 100%; border-radius: 10px">
+            <thead style="background-color: #f2c582">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Region</th>
+                    <th scope="col">Holiday Type</th>
+                    <th scope="col">Holiday Length</th>
+                    <th scope="col">Holiday Date</th>
+                    <th scope="col">Created Dept</th>
+                    <th scope="col">Created User</th>
+                    <th scope="col">Last User</th>
+
+                    <th scope="col">Actions</th>
+
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <input type="hidden" id="userid" />
+</body>
+</html>
+<script src="../Manday_JS/HolidayList.js"></script>
+    <!--<script>
+
+
+
+     var apiURL = 'http://localhost:53943/api/apcnote/';
+
+     // var apiURL = 'http://10.3.0.70:9001/api/apcnote/';
+  //  var apiURL = 'http://10.3.0.208:9001/api/apcnote/';
+
+    var qsParm = new Array();
+    function qs() {
+
+        var query = window.location.search.substring(1);
+        var parms = query.split('&');
+        for (var i = 0; i < parms.length; i++) {
+            var pos = parms[i].indexOf('=');
+            if (pos > 0) {
+                var key = parms[i].substring(0, pos);
+                var val = parms[i].substring(pos + 1);
+                qsParm[key] = val;
+            }
+        }
+        if (parms.length > 0) {
+            $("#userid").val(atob(qsParm["userid"]));
+            return true;
+        } else {
+            window.location.href = 'index.html';
+            return false;
+        }
+    }
+    $(document).ready(function () {
+
+        qs();
+      
+        Holiday_list();
+        document.getElementById('h_type').addEventListener('change', function () {
+            var holidayType = this.value;
+            var holidayLengthField = document.getElementById('holidayLengthField');
+
+            // If APH SPECIAL HOLIDAY is selected, show the Holiday Length field; otherwise, hide it
+            if (holidayType === '3') {
+                holidayLengthField.style.display = 'block';
+            } else {
+                holidayLengthField.style.display = 'none';
+            }
+        });
+        //document.getElementById('region').addEventListener('change', function () {
+            
+        //    var region = this.value;
+        //    var holidayTypeDropdown = document.getElementById('h_type');
+
+        //    // Clear existing options
+        //    holidayTypeDropdown.innerHTML = '<option value="">Select Holiday Type</option>';
+
+        //    // Add options based on region
+        //    if (region === 'APH') {
+        //        holidayTypeDropdown.innerHTML += '<option value="1">SUNDAY/SATURDAY</option>';
+        //        holidayTypeDropdown.innerHTML += '<option value="2">SPECIAL HOLIDAY</option>';
+        //        holidayTypeDropdown.innerHTML += '<option value="3">APH SPECIAL HOLIDAY</option>';
+        //        document.getElementById('holidayLengthField').style.display = 'block';
+        //    }
+
+        //    else {
+        //        holidayTypeDropdown.innerHTML += '<option value="1">SUNDAY/SATURDAY</option>';
+        //        holidayTypeDropdown.innerHTML += '<option value="2">SPECIAL HOLIDAY</option>';
+        //        document.getElementById('holidayLengthField').style.display = 'none';
+        //    }
+        //});
+
+       
+
+    //    $('#rpt_grid').hide();
+
+        //$('#region').change(function () {
+        //    var selectedRegion = $(this).val();
+
+        //    var region = {
+        //        Region: selectedRegion
+        //    };
+        //    $.post(apiURL + 'GetDepartmentsByRegion', region, function (response) {
+
+        //        console.log(response);
+        //        // Clear existing options
+        //        $('#department').empty();
+
+        //        // Add default option
+        //        $('#department').append($('<option>', {
+        //            value: '',
+        //            text: 'Select Department'
+        //        }));
+
+        //        $.each(response, function (index, department) {
+        //            $('#department').append($('<option>', {
+        //                value: department,
+        //                text: department
+        //            }));
+        //        });
+
+        //    }).fail(function (jqxhr, settings, ex) {
+        //        $(".dimmer").hide();
+        //        alert("error: " + ex);
+        //    });
+        //    // var departments = departmentOptions[selectedRegion] || [];
+
+        //    // Clear existing options
+        //    //$('#department').empty();
+
+        //    //// Add default option
+        //    //$('#department').append($('<option>', {
+        //    //    value: '',
+        //    //    text: 'Select Department'
+        //    //}));
+
+        //    //// Add options for the selected region
+        //    //departments.forEach(function (department) {
+        //    //    $('#department').append($('<option>', {
+        //    //        value: department,
+        //    //        text: department
+        //    //    }));
+        //    //});
+
+
+        //});
+
+    });
+ 
+    //$("#e_date,#M_date").datepicker({
+    //    dateFormat: 'yy-mm-dd',
+    //    changeMonth: true,
+    //    changeYear: true,
+       
+    //});
+    $("#e_date").datepicker({
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        changeYear:true,
+        beforeShowDay: function (date) {
+            var day = date.getDay();
+            var holidayType = $("#h_type").val();
+          
+
+            // Enable only Saturdays (6) and Sundays (0) if holiday type is SUNDAY/SATURDAY
+            if (holidayType == "1") {
+                return [(day == 6 || day == 0)];
+            } else if (day == 0) {
+                // Disable Sundays for other holiday types
+                return [false];
+            }
+
+            return [true];
+        }
+    });
+
+    $("#M_date").datepicker({
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        changeYear: true,
+        beforeShowDay: function (date) {
+            var day = date.getDay();
+            var holidayType = $("#M_type").val();
+            // holidayType = $("#M_type").val();
+
+            // Enable only Saturdays (6) and Sundays (0) if holiday type is SUNDAY/SATURDAY
+            if (holidayType == "1") {
+                return [(day == 6 || day == 0)];
+            } else if (day == 0) {
+                // Disable Sundays for other holiday types
+                return [false];
+            }
+
+            return [true];
+        }
+    });
+
+
+    $("#h_type,M_type").change(function () {
+        // Refresh datepicker to reflect changes
+        $("#e_date,M_date").datepicker("refresh");
+    });
+    var User = {};
+    var rowData = '';
+    var datatableVariable = '';
+
+    function Holiday_list() {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: '',
+            url: apiURL + 'Get_Holiday_details',
+            success: function (data) {
+                datatableVariable = $('#RegistrationGrid').DataTable({
+                    "destroy": "true",
+                    "dataSrc": "",
+                    data: data,
+                    columns: [
+
+
+                        /* { 'data': 'Id' },*/
+                        {
+                            data: null, title: 'S.No.', visible: true, render: function (data, type, row, meta) {
+                                return meta.row + 1;
+                            }
+                        },
+                        { 'data': 'Region' },
+                        {
+                            'data': 'HolidayType',
+
+                            render: function (data, type, row) {
+                                if (type === 'display') {
+                                    
+                                    switch (row.HolidayType) {
+                                        case '1':
+                                            return 'SUNDAY/SATURDAY';
+                                        case '2':
+                                            return 'SPECIAL HOLIDAY';
+                                        case '3':
+                                            return 'Not-Full Day HOLIDAY';
+                                        default:
+                                            return 'Unknown Holiday Type';
+                                    }
+                                }
+                                return data; // For other types (e.g., 'filter' or 'sort'), return the original data
+                            }
+
+                        },
+                        { 'data': 'HolidayLength' },
+
+                       
+                        {
+                            data: 'HolidayDate',
+                            render: function (d) {
+                                return moment(d).format("YYYY-MM-DD");
+                            }
+                        },
+                        { 'data': 'CreatedDept' },
+                        { 'data': 'CreatedUser' },
+
+                        { 'data': 'LastUser' },
+                        {
+                            data: null,
+                            render: function (data, type, row) {
+                                return '<div class="action-group">' +
+                                    '<button class="editBtn btn btn-link" data-id="' + row.Id + '"><i class="fas fa-pencil-alt"></i></button>' +
+                                    '<button class="deleteBtn btn btn-link custom-delete-btn" data-id="' + row.Id + '"><i class="fas fa-trash-alt"></i></button>' +
+                                    '</div>';
+                            },
+
+                            orderable: false,
+                            searchable: false
+                        }
+
+                    ],
+                    dom: 'Bfrtip',
+                    buttons:
+                        [
+                            {
+                                extend: 'excelHtml5',
+                                title: 'Holiday List Excel',
+                                text: 'Export to excel'
+
+                            }
+                        ]
+                });
+
+            }
+
+        });
+    }
+
+    $('#RegistrationGrid').on('click', '.editBtn', function () {
+        
+        rowData = datatableVariable.row($(this).closest('tr')).data();
+        console.log(rowData);
+        populateEditForm(rowData);
+        $('#updateModal').modal('show');
+    });
+
+    function populateEditForm(rowData) {
+        
+        $('#M_region').val(rowData.Region);
+
+
+        //var holidayTypeDropdown = document.getElementById('M_type');
+
+        //// Clear existing options
+        //holidayTypeDropdown.innerHTML = '<option value="">Select Holiday Type</option>';
+
+        //// Add options based on region
+        //if (rowData.Region == 'APH') {
+        //    holidayTypeDropdown.innerHTML += '<option value="1">SUNDAY/SATURDAY</option>';
+        //    holidayTypeDropdown.innerHTML += '<option value="2">SPECIAL HOLIDAY</option>';
+        //    holidayTypeDropdown.innerHTML += '<option value="3">APH SPECIAL HOLIDAY</option>';
+        //   // document.getElementById('holidayLengthField').style.display = 'block';
+        //}
+
+        //else {
+        //    holidayTypeDropdown.innerHTML += '<option value="1">SUNDAY/SATURDAY</option>';
+        //    holidayTypeDropdown.innerHTML += '<option value="2">SPECIAL HOLIDAY</option>';
+        //   // document.getElementById('holidayLengthField').style.display = 'none';
+        //}
+
+
+        $('#M_type').val(rowData.HolidayType);
+
+        var fillDate = new Date(rowData.HolidayDate);
+        var year = fillDate.getFullYear();
+        var month = ('0' + (fillDate.getMonth() + 1)).slice(-2); // Adding 1 because months are zero-based
+        var day = ('0' + fillDate.getDate()).slice(-2);
+        var formattedDate = year + '-' + month + '-' + day;
+        $('#M_date').val(formattedDate);
+
+
+    }
+
+    $('#btnUpdate').click(function () {
+        
+
+        if ($('#M_region').val() == '') {
+            alert('Please Select Region');
+            $('#M_region').focus();
+        } else if ($('#M_type').val() == '') {
+            alert('Select Holiday Type');
+            $('#M_type').focus();
+        } else if ($('#M_date').val == '') {
+            alert('Select Holiday Date');
+            $('#M_date').focus();
+        }
+        else {
+
+            var update_role = {};
+           /* rowData = datatableVariable.row($(this).closest('tr')).data();*/
+
+            update_role.ID = rowData.ID;
+            update_role.Region = $('#M_region').val();
+            update_role.HolidayType = $('#M_type').val();
+            update_role.HolidayDate = $('#M_date').val();
+            update_role.LastUser = $('#userid').val();
+           
+
+            $.post(apiURL + 'Update_Holiday_details', update_role, function (response) {
+
+                console.log(response);
+                if (response == "Success") {
+                    toastr.success('Holidays Updated Successfully!', 'Success', { timeOut: 3000 });
+                    //  alert('User Rights Updated Successfully');
+                    $('#updateModal').modal('hide');
+                    Holiday_list();
+                } else {
+                    alert("somthing error");
+                    $('#updateModal').modal('hide');
+                }
+
+            }).fail(function (jqxhr, settings, ex) {
+                $(".dimmer").hide();
+                alert("error: " + ex);
+            });
+        }
+    });
+
+    $('#RegistrationGrid').on('click', '.deleteBtn', function () {
+        
+        var delete_info = {};
+        rowData = datatableVariable.row($(this).closest('tr')).data();
+
+        delete_info.ID = rowData.ID;
+        var confirmDelete = confirm("Are you sure you want to delete this record?");
+        if (confirmDelete) {
+            $.post(apiURL + 'Delete_Holiday', delete_info, function (response) {
+
+
+                if (response == "Success") {
+                    toastr.success('Record Deleted!', 'Deleted', { timeOut: 3000 });
+
+                    Holiday_list();
+                } else {
+                    alert("somthing error");
+                }
+
+            }).fail(function (jqxhr, settings, ex) {
+                $(".dimmer").hide();
+                alert("error: " + ex);
+            });
+        }
+    });
+
+
+    $('#submit').click(function () {
+        
+
+        if ($("#region").val() == "") {
+            alert('Please Select Region');
+            $("#region").focus();
+        }
+        else if
+            ($("#h_type").val() == "") {
+            alert('Please Select To Date');
+            $("#e_date").focus();
+            return false;
+        } else if ($("#e_date").val() == "") {
+            alert('Please select Holiday Date');
+            $("#e_date").focus();
+        }
+        else {
+            
+            User.Region = $('#region').val();
+            User.HolidayType = $('#h_type').val();
+            User.HolidayDate = $('#e_date').val();
+            User.CreatedUser = $('#userid').val();
+
+            if (User.HolidayType == 1 || User.HolidayType == 2) {
+                User.HolidayLength = 8;
+            } else {
+                User.HolidayLength = $('#h_len').val();
+            }
+            
+           
+
+            $.post(apiURL + 'Insert_Holiday_details', User, function (response) {
+
+                //console.log(response);
+                var insertedRows = [];
+                var failedRows = [];
+                var ExistedRows = [];
+                
+                for (var i = 0; i < response.length; i++) {
+                    if (response[i].Result === 'Success') {
+                        insertedRows.push(response[i].Region);
+                    } else if (response[i].Result === 'Failed') {
+                        failedRows.push(response[i].Region);
+                    } else if (response[i].Result === 'exist') {
+                        ExistedRows.push(response[i].Region);
+                    }
+                }
+
+                if (insertedRows.length > 0) {
+                    Holiday_list();
+                    toastr.success('Inserted Region: ' + insertedRows.join(', '), 'Success', { timeOut: 3000 });
+                }
+
+                if (failedRows.length > 0) {
+                    toastr.warning('Failed to insert Region: ' + failedRows.join(', '), 'Warning', { timeOut: 3000 });
+                    // console.log('Failed rows:', failedRows);
+                }
+                if (ExistedRows.length > 0) {
+                    toastr.warning('Already Holiday Date is Present : ' + ExistedRows.join(', '), 'Warning', { timeOut: 3000 });
+
+                }
+                //if (response == "Success") {
+                //    toastr.success('Holiday Added Successfully!', 'Success', { timeOut: 3000 });
+                //   // alert('Holiday Added Successfully');
+                //    Holiday_list();
+                //} else if (response == 'registered') {
+                //    toastr.warning('Already Holiday exists!', 'Warning', { timeOut: 3000 });
+                //}
+                //else {
+                //    alert("somthing error");
+                //}
+
+            }).fail(function (jqxhr, settings, ex) {
+                $(".dimmer").hide();
+                alert("error: " + ex);
+            });
+
+
+
+        }
+    });
+
+</script>-->

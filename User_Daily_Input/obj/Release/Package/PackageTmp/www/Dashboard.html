@@ -1,0 +1,1004 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Region Category Percentage Stacked Bar Graph</title>
+    <link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
+    <!--<link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'
+          rel='stylesheet'>-->
+    <!-- <link href="../Manday_CDN/jquery-ui.css" rel="stylesheet" />-->
+    <!-- <link href="../jquery-ui/jquery-ui-last.css" rel="stylesheet" />-->
+    <!--    <link href="../jquery-ui/jquery-ui.css" rel="stylesheet" />
+    -->
+    <link href="../css/jquery-ui.css" rel="stylesheet" />
+    <link href="../css/jquery-ui.theme.css" rel="stylesheet" />
+    <script src="../scripts/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="../semantic/dist/semantic.min.js"></script>
+    <script src="../jquery-ui/jquery-ui.js"></script>
+
+    <!-- <script src="https://code.highcharts.com/highcharts.js"></script>-->
+    <script src="../Manday_CDN/highcharts.js"></script>
+
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>-->
+    <script src="../Manday_CDN/exporting.js"></script>
+
+    <!-- <script src="https://code.highcharts.com/modules/accessibility.js"></script>-->
+
+    <script src="../Manday_CDN/accessibility.js"></script>
+
+    <!-- <script src="https://code.highcharts.com/modules/offline-exporting.js"></script>-->
+    <script src="../Manday_CDN/offline-exporting.js"></script>
+
+    <!-- <script src="https://code.highcharts.com/modules/export-data.js"></script>-->
+    <script src="../Manday_CDN/export-data.js"></script>
+
+
+
+
+
+
+
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">-->
+    <link href="../Manday_CDN/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <!--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">-->
+    <link href="../Manday_CDN/buttons.dataTables.min.css" rel="stylesheet" />
+
+    <!-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>-->
+    <script src="../Manday_CDN/jquery.dataTables.min.js"></script>
+
+    <!--  <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>-->
+    <script src="../Manday_CDN/dataTables.buttons.min.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>-->
+    <script src="../Manday_CDN/jszip.min.js"></script>
+
+    <!--    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>-->
+    <script src="../Manday_CDN/buttons.html5.min.js"></script>
+
+    <style>
+        .buttons-field {
+            position: relative; /* Change to relative positioning */
+            top: 0.2in; /* Move the buttons 5 inches down */
+        }
+
+        .verybigmodal {
+            max-width: 96%;
+        }
+
+        .excel-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ui column grid">
+        <div class="column">
+            <div class="ui stacked aligned segment">
+                <h2>APACHE GROUP MANDAY INPUT GRAPH</h2>
+                <br />
+                <div class="ui medium form" id="">
+                    <div class="six fields">
+                        <div class="three wide field">
+                            <label for="chart_type">Chart Type</label>
+                            <select id="chart_type" class="form-control">
+                                <option value="byregion">By Region</option>
+                                <option value="bydepartment">By Department</option>
+                                <!--<option value="bymonth">By month</option>-->
+
+                            </select>
+                        </div>
+                        <div class="three wide field">
+                            <label>Region</label>
+                            <select id="region" input" name="skills" class="form-control">
+                            </select>
+                        </div>
+                        <div class="three wide field" id="department_field">
+                            <label>Department</label>
+                            <select id="department" multiple input" class="ui fluid dropdown">
+                                <option value="">Select Department</option>
+
+                            </select>
+                        </div>
+
+                        <div class="three wide field">
+                            <label for="Category">Category</label>
+                            <select id="category" class="form-control">
+                                <option value="" selected>Select Category</option>
+                                <option value="ALL">ALL</option>
+                                <option value="项目Project">项目Project</option>
+                                <option value="运维-需求Maintenance-Req.">运维-需求Maintenance-Req.</option>
+                                <option value="运维-日常Maintenance-Daily">运维-日常Maintenance-Daily</option>
+                                <option value="行政管理Administration">行政管理Administration</option>
+                                <option value="培训学习Training/Study">培训学习 Training/Study</option>
+                                <option value="休假Leave">休假 Leave</option>
+                                <option value="空闲Idle">空闲 Idle</option>
+
+                            </select>
+                        </div>
+                        <div class="three wide field " id="strt">
+                            <label>Start Date</label>
+                            <input type="text" id="s_date" class="form-control" autocomplete="off">
+
+                        </div>
+                        <div class="three wide field " id="enddt">
+                            <label>End Date</label>
+                            <input type="text" id="e_date" class="form-control" autocomplete="off">
+
+                        </div>
+
+                        <!--<div class="three wide field">
+                            <label for="date_type"> Type</label>
+                            <select id="date_type" class="form-control">
+                                <option value="" selected>Select type</option>
+                                <option value="byweek">By Week</option>
+                                <option value="bymonth">By Month</option>
+
+
+                            </select>
+                        </div>-->
+
+
+                        <div class="two wide field buttons-field">
+                            <div class="field right float-end">
+                                <button class="ui green button" id="search" type="submit">Search</button>
+                                <!--<button class="ui grey button" id="clear" type="reset">Clear</button>-->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="container" style="width: 1200px; height: 800px; margin: 0 auto;"></div>
+
+
+
+
+
+    <div id="excelModal" class="ui modal">
+
+        <div class="header">
+            MANDAY REPORT
+        </div>
+        <div class="content">
+            <form id="editEmployeeForm">
+                <div>
+                    <table id="M_dataTable" class="ui olive celled table">
+
+                        <thead>
+                            <tr>
+                                <!-- Table header rows -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+        <div class="actions">
+            <!-- <button id="modal_close" class="ui button">Close</button>-->
+            <div class="ui cancel button">Close</div>
+            <!--  <div class="ui secondary button">Cancel</div>-->
+            <!-- Other buttons -->
+        </div>
+    </div>
+
+    <input type="hidden" id="userid" />
+
+
+    <!--  <script>
+          var apiURL = 'http://localhost:53943/api/apcnote/';
+        //    var apiURL = 'http://10.3.0.70:9001/api/apcnote/';
+           //  var apiURL = 'http://10.3.0.208:9001/api/apcnote/';
+          var user_account = '';
+
+
+          var jsonData;
+          var qsParm = new Array();
+          function qs() {
+
+              var query = window.location.search.substring(1);
+              var parms = query.split('&');
+              for (var i = 0; i < parms.length; i++) {
+                  var pos = parms[i].indexOf('=');
+                  if (pos > 0) {
+                      var key = parms[i].substring(0, pos);
+                      var val = parms[i].substring(pos + 1);
+                      qsParm[key] = val;
+                  }
+              }
+              if (parms.length > 0) {
+                  $("#userid").val(atob(qsParm["userid"]));
+                  return true;
+              } else {
+                  window.location.href = 'index.html';
+                  return false;
+              }
+          }
+
+
+
+
+
+
+          $("#s_date,#e_date").datepicker({
+              dateFormat: 'yy-mm-dd',
+              changeMonth: true,
+              changeYear: true
+
+          });
+          function Get_company() {
+
+              user_account = $('#userid').val();
+              var User1 = {
+                  Account: user_account
+              };
+
+              $.post(apiURL + 'GetCompanyByRight', User1, function (response) {
+
+
+                  $('#region').append($('<option>', {
+                      value: '',
+                      text: 'Select Company'
+                  }));
+
+
+                  var arrdata = JSON.parse(response[0]);
+
+                  var content = '';
+
+                  if (arrdata.length > 2) {
+                      var all = '<option value="ALL">ALL</option>';
+                      $('#region').append(all);
+                  }
+                  if (arrdata.length > 0) {
+                      for (j = 0; j < arrdata.length; j++) {
+                          content += '<option value="' + arrdata[j].REGION + '">' + arrdata[j].REGION + '</option>';
+                      }
+                      $('#region').append(content);
+                  }
+
+
+              }, 'json').fail(function (jqxhr, settings, ex) {
+                  $(".dimmer").hide();
+                  alert("error: " + ex);
+              });
+          }
+          $(document).ready(function () {
+              qs();
+              $('#excelModal').modal('hide');
+              Get_company();
+              // $('#department_field').hide();
+              //  $("department_field").hide();
+              $('#region').change(function () {
+
+
+                  selectedRegion = $(this).val();
+
+
+                  if (selectedRegion == '' || selectedRegion == null) {
+                      alert('Please select Region');
+                  }
+                  else if (selectedRegion == 'ALL') {
+                      $('#department').empty();
+                      $('#department').dropdown('clear');
+
+                      $('#department').append($('<option>', {
+                          value: '',
+                          text: 'Select Department'
+                      }));
+                      $('#department').append($('<option>', {
+                          value: 'ALL',
+                          text: 'ALL'
+                      }));
+
+
+                  } else {
+
+                      user_account = $('#userid').val();
+                      var dept = {
+                          Assigned_region: selectedRegion,
+                          Account: user_account
+                      };
+
+                      $.post(apiURL + 'GetDepartmentsByRight', dept, function (response) {
+
+
+
+                          $('#department').empty();
+                          $('#department').append($('<option>', {
+                              value: '',
+                              text: 'Select Department'
+                          }));
+
+                          //$.each(response[0], function (index, region) {
+                          //    $('#region').append($('<option>', {
+                          //        value: region,
+                          //        text: region
+                          //    }));
+                          //});
+                          var arrdata = JSON.parse(response[0]);
+
+
+                          var content = '';
+                          if (arrdata.length > 0) {
+
+
+                              for (j = 0; j < arrdata.length; j++) {
+
+                                  content = content + '<option value="' + arrdata[j].DEPARTMENT + '">' + arrdata[j].DEPARTMENT + '</option>';
+
+                              }
+
+                              $('#department').append(content);
+
+
+                          }
+
+                      }, 'json').fail(function (jqxhr, settings, ex) {
+                          $(".dimmer").hide();
+                          alert("error: " + ex);
+                      });
+                      $('#department').dropdown('clear');
+                  }
+
+
+
+
+
+
+              });
+
+              $('#chart_type').change(function () {
+                  var selectedValue = $(this).val();
+                  if (selectedValue === 'byregion') {
+                      $('#department_field').hide();
+                  } else if (selectedValue === 'bydepartment') {
+                      $('#department_field').show();
+                  }
+              });
+
+              // Initially hide the department field on page load
+              $('#department_field').hide();
+              $('#department').dropdown({
+
+                  onChange: function (selectedValues, selectedText, $selectedItems) {
+
+                      // Update the content of the selectedOptions element
+                      if (Array.isArray(selectedText)) {
+                          // Update the content of the selectedOptions element
+                          $('#selectedOptions').text(selectedText.join(', '));
+                      } else {
+                          // If selectedText is not an array, it means only one option is selected
+                          $('#selectedOptions').text(selectedText);
+                      }
+                  }
+              });
+
+
+
+          });
+
+
+
+          function generateColumns(data) {
+
+              const columns = [
+                  { data: 'REGION', title: 'REGION' },
+                  { data: 'EmployeeCount', title: 'EmployeeCount' },
+                  { data: 'BaseCount', title: 'BaseCount' },
+                  { data: '项目Project_LT_H', title: '项目Project LT_H' },
+                  { data: '运维-需求Maintenance-Req_LT_H', title: '运维-需求Maintenance-Req. LT_H' },
+                  { data: '运维-日常Maintenance-Daily_LT_H', title: '运维-日常Maintenance-Daily LT_H' },
+                  { data: '行政管理Administration_LT_H', title: '行政管理Administration LT_H' },
+                  { data: '培训学习 Training/Study_LT_H', title: '培训学习Training/Study LT_H' },
+                  { data: '休假 Leave_LT_H', title: '休假 Leave LT_H' },
+
+                  { data: '空闲 Idle_LT_H', title: '空闲 Idle LT_H' },
+
+              ];
+
+
+              const sumColumn = {
+                  title: 'SUM (LT_H)',
+                  render: function (data, type, row) {
+                      let sum = 0;
+                      Object.keys(row).forEach(key => {
+                          if (key.endsWith('_LT_H')) {
+
+                              sum += parseFloat(row[key] || 0);
+                          }
+                      });
+
+                      return sum.toFixed(2);
+                  }
+              };
+              columns.push(sumColumn);
+
+              columns.push({ data: '项目Project_Percentage', title: '项目Project %' });
+              columns.push({ data: '运维-需求Maintenance-Req_Percentage', title: '运维-需求Maintenance-Req. %' });
+              columns.push({ data: '运维-日常Maintenance-Daily_Percentage', title: '运维-日常Maintenance-Daily %' });
+              columns.push({ data: '行政管理Administration_Percentage', title: '行政管理Administration %' });
+              columns.push({ data: '培训学习 Training/Study_Percentage', title: '休假 Leave %' });
+              columns.push({ data: '休假 Leave_Percentage', title: '培训学习 Training/Study %' });
+              columns.push({ data: '空闲 Idle_Percentage', title: '空闲 Idle %' });
+
+              const sumPercent = {
+                  title: 'SUM (%)',
+                  render: function (data, type, row) {
+                      let sum = 0;
+                      Object.keys(row).forEach(key => {
+                          if (key.endsWith('_Percentage')) {
+                              sum += parseFloat(row[key] || 0);
+                          }
+                      });
+                      return sum.toFixed(2);
+                  }
+              };
+              columns.push(sumPercent);
+
+              columns.push({ data: 'FromDate', title: 'From Date' });
+              columns.push({ data: 'ToDate', title: 'To Date' });
+
+
+              return columns;
+          }
+
+
+          function reshapeData(data) {
+
+              const categories = [
+                  '项目Project',
+                  '运维-需求Maintenance-Req.',
+                  '运维-日常Maintenance-Daily',
+                  '行政管理Administration',
+                  '培训学习 Training/Study',
+                  '休假 Leave',
+                  '空闲 Idle'
+              ];
+              const reshapedData = [];
+
+              data.forEach(item => {
+
+                  const region = item.Region;
+
+                  const fromDate = item.fromdate.substring(0, 10);
+                  const toDate = item.todate.substring(0, 10);
+                  const employeeCount = item.EmployeeCount;
+                  const baseCount = item.BaseCount;
+
+                  if (!reshapedData[region]) {
+                      reshapedData[region] = {
+                          REGION: region,
+                          EmployeeCount: employeeCount,
+                          BaseCount: baseCount,
+                          FromDate: fromDate,
+                          ToDate: toDate
+                      };
+                      // Initialize all columns with a default value of 0
+                      categories.forEach(category => {
+                          const categoryKey = category.replace('.', ''); // Remove special characters
+                          reshapedData[region][categoryKey + '_LT_H'] = 0;
+                          reshapedData[region][categoryKey + '_Percentage'] = 0;
+                      });
+                  }
+
+                  const category = item.Category.replace('.', ''); // Remove periods
+                 // const categoryKey = category.replace('.', ''); // Remove special characters
+                  reshapedData[region][category + '_LT_H'] = item.LT_H;
+                  reshapedData[region][category + '_Percentage'] = item.Percentage;
+              });
+
+              // Convert the reshapedData object into an array
+              const reshapedArray = Object.values(reshapedData);
+              return reshapedArray;
+          }
+
+          function populateDataTable(data, columns,start_date,to_date) {
+              if ($.fn.DataTable.isDataTable('#M_dataTable')) {
+                  // $('#M_dataTable').DataTable().destroy();
+                  $('#M_dataTable').DataTable().clear().destroy();
+              }
+
+
+
+              $('#M_dataTable').DataTable({
+                  data: data,
+                  columns: columns,
+                  autoWidth: false,
+                  scrollX: true,
+                  dom: 'Bfrtip',
+                  buttons: [
+                      {
+                          extend: 'excelHtml5',
+                          title: `Manday Input Excel Report from ${start_date} to ${to_date}`,
+                          text: 'Download Excel',
+                          className: 'excel-button'
+
+                      }
+                      ]
+              });
+          }
+
+
+
+          function generateDeptColumns(data) {
+
+              const columns = [
+                  { data: 'REGION', title: 'REGION' },
+                  { data: 'DEPARTMENT', title: 'DEPARTMENT' },
+                  { data: 'EmployeeCount', title: 'EmployeeCount' },
+                  { data: 'BaseCount', title: 'BaseCount' },
+                  { data: '项目Project_LT_H', title: '项目Project LT_H' },
+                  { data: '运维-需求Maintenance-Req_LT_H', title: '运维-需求Maintenance-Req. LT_H' },
+                  { data: '运维-日常Maintenance-Daily_LT_H', title: '运维-日常Maintenance-Daily LT_H' },
+                  { data: '行政管理Administration_LT_H', title: '行政管理Administration LT_H' },
+                  { data: '培训学习 Training/Study_LT_H', title: '培训学习Training/Study LT_H' },
+                  { data: '休假 Leave_LT_H', title: '休假 Leave LT_H' },
+
+                  { data: '空闲 Idle_LT_H', title: '空闲 Idle LT_H' },
+              ];
+
+             /* const categories = {};
+              const categories2 = {};
+              data.forEach(item => {
+                  const category = item.Category.replace('.', ''); // Remove periods
+                  const originalCategory = item.Category;
+                  if (!categories[category]) {
+
+                      categories[category] = true;
+                      columns.push({ data: category + '_LT_H', title: originalCategory + ' (LT_H)' });
+                  }
+              });*/
+
+              // Add SUM (LT_H) column
+             /* const sumColumn = {
+                  title: 'SUM (LT_H)',
+                  render: function (data, type, row) {
+                      let sum = 0;
+                      Object.keys(categories).forEach(category => {
+                          sum += parseInt(row[category + '_LT_H'] || 0);
+                      });
+                      return sum;
+                  }
+              };*/
+              const sumColumn = {
+                  title: 'SUM (LT_H)',
+                  render: function (data, type, row) {
+                      let sum = 0;
+                      Object.keys(row).forEach(key => {
+                          if (key.endsWith('_LT_H')) {
+                              sum += parseFloat(row[key] || 0);
+                          }
+                      });
+                      return sum.toFixed(2);
+                  }
+              };
+              columns.push(sumColumn);
+
+              // Add Percentage columns
+             /* data.forEach(item => {
+
+                  const category = item.Category.replace('.', ''); // Remove periods
+                  const originalCategory = item.Category;
+                  if (!categories2[category]) {
+                      categories2[category] = true;
+
+                      columns.push({ data: category + '_Percentage', title: originalCategory + '%' });
+                  }
+              });*/
+              columns.push({ data: '项目Project_Percentage', title: '项目Project %' });
+              columns.push({ data: '运维-需求Maintenance-Req_Percentage', title: '运维-需求Maintenance-Req. %' });
+              columns.push({ data: '运维-日常Maintenance-Daily_Percentage', title: '运维-日常Maintenance-Daily %' });
+              columns.push({ data: '行政管理Administration_Percentage', title: '行政管理Administration %' });
+              columns.push({ data: '培训学习 Training/Study_Percentage', title: '休假 Leave %' });
+              columns.push({ data: '休假 Leave_Percentage', title: '培训学习 Training/Study %' });
+              columns.push({ data: '空闲 Idle_Percentage', title: '空闲 Idle %' });
+             /* const sumPercent = {
+                  title: 'SUM (%)',
+                  render: function (data, type, row) {
+                      let sum = 0;
+                      Object.keys(categories).forEach(category => {
+                          sum += parseInt(row[category + '_Percentage'] || 0);
+                      });
+                      return sum;
+                  }
+              };*/
+              const sumPercent = {
+                  title: 'SUM (%)',
+                  render: function (data, type, row) {
+                      let sum = 0;
+                      Object.keys(row).forEach(key => {
+                          if (key.endsWith('_Percentage')) {
+                              sum += parseFloat(row[key] || 0);
+                          }
+                      });
+                       return sum.toFixed(2);
+                  }
+              };
+              columns.push(sumPercent);
+              columns.push({ data: 'FromDate', title: 'From Date' });
+              columns.push({ data: 'ToDate', title: 'To Date' });
+
+              return columns;
+          }
+
+
+          function reshapeDeptData(data) {
+
+              const categories = [
+                  '项目Project',
+                  '运维-需求Maintenance-Req.',
+                  '运维-日常Maintenance-Daily',
+                  '行政管理Administration',
+                  '培训学习 Training/Study',
+                  '休假 Leave',
+                  '空闲 Idle'
+              ];
+              const reshapedData = [];
+
+              data.forEach(item => {
+                  const region = item.Region;
+                  const department = item.Department; // Add department
+                  const fromDate = item.fromdate.substring(0, 10);
+                  const toDate = item.todate.substring(0, 10);
+                  const employeeCount = item.EmployeeCount;
+                  const baseCount = item.BaseCount;
+
+                  const key = region + '_' + department; // Generate key combining region and department
+
+                  if (!reshapedData[key]) {
+                      reshapedData[key] = {
+                          REGION: region,
+                          DEPARTMENT: department, // Add department
+                          EmployeeCount: employeeCount,
+                          BaseCount: baseCount,
+                          FromDate: fromDate,
+                          ToDate: toDate
+                      };
+                      // Initialize all columns with a default value of 0
+                      categories.forEach(category => {
+                          const categoryKey = category.replace('.', ''); // Remove special characters
+                          reshapedData[key][categoryKey + '_LT_H'] = 0;
+                          reshapedData[key][categoryKey + '_Percentage'] = 0;
+                      });
+                  }
+
+                  const category = item.Category.replace('.', ''); // Remove periods
+                  //const categoryKey = category.replace(/[^a-zA-Z0-9]/g, ''); // Remove special characters
+                  reshapedData[key][category + '_LT_H'] = item.LT_H;
+                  reshapedData[key][category + '_Percentage'] = item.Percentage;
+              });
+
+              // Convert the reshapedData object into an array
+              const reshapedArray = Object.values(reshapedData);
+              return reshapedArray;
+          }
+
+          $('#search').click(function () {
+
+              if ($("#region").val() == "") {
+                  alert('Please Select Region');
+                  $("#region").focus();
+              }
+
+              //else if ($("#department").val() == "") {
+              //    alert('Please Select Department');
+              //    $("#department").focus();
+              //}
+
+              //else if ($("#emp_no").val() == "") {
+              //    alert('Please Select Employee');
+              //    $("#emp_no").focus();
+              //}
+              else if ($('#category').val() == '') {
+                  alert('Please Select Category');
+                  $("#category").focus();
+              }
+              else if ($("#s_date").val() == "") {
+                  alert('Please Select From Date');
+                  $("#s_date").focus();
+                  return false;
+              } else if
+                  ($("#e_date").val() == "") {
+                  alert('Please Select To Date');
+                  $("#e_date").focus();
+                  return false;
+              } else if ($("#s_date").val() > $("#e_date").val()) {
+                  alert('Start Date greater than To Date');
+                  $("#s_date").focus();
+              }
+              else {
+
+                  var User = {};
+                  User.Start_date = $("#s_date").val();
+                  User.To_date = $("#e_date").val();
+                  User.Region = $('#region').val();
+                  User.Category = $('#category').val();
+
+
+                  // User.EmployeeNumber = $('#emp_no').val();
+                  // User.Department = $('#department').val();
+                  // var departmentValue = $('#department').val().toString();
+                  // var departmentArray = departmentValue.split(',');
+
+
+
+
+
+
+
+
+
+                  if ($('#chart_type').val() == 'byregion') {
+                      $.ajax({
+                          type: "GET",
+                          dataType: "json",
+                          //contentType: "application/json",
+                          data: User,
+                          url: apiURL + 'GetMandayChartDataByRegion',
+                          success: function (data) {
+                              jsonData = data;
+
+                              var regions = jsonData.map(function (item) {
+                                  return item.Region;
+                              });
+                              regions = [...new Set(regions)]; // Remove duplicates
+
+                              var categories = jsonData.map(function (item) {
+                                  return item.Category;
+                              });
+                              categories = [...new Set(categories)]; // Remove duplicates
+                              var option = {
+                                  'stroke-width': 1,
+                                  stroke: '#2f7ed8', // Background color
+                                  fill: '#2f7ed8', // Border color
+                                  r: 2,
+                                  padding: 5,
+                                  style: {
+                                      color: '#FFFFFF' // Text color
+                                  }
+                              };
+                              // Initialize Highcharts chart
+                              Highcharts.chart('container', {
+                                  chart: {
+                                      type: 'column',
+                                      events: {
+                                          load: function () {
+                                              this.renderer.button('Excel Report', this.chartWidth - 100, 40, function () {
+                                                  // Add button click functionality here
+                                                  console.log(data);
+                                                  const reshapedData = reshapeData(data);
+                                                  const columns = generateColumns(data);
+                                                  const start_date = $('#s_date').val();
+                                                  const to_date = $('#e_date').val();
+                                                  populateDataTable(reshapedData, columns, start_date, to_date);
+                                                  $('#excelModal').modal('show');
+                                              }, option, option, option)
+                                                  .attr({
+                                                      id: 'excelButton'
+                                                  })
+                                                  .on('mouseover', function () {
+                                                      $(this.element).css({
+                                                          'fill': '#2f7ed8',
+                                                          'stroke': '#2f7ed8',
+                                                      });
+                                                  })
+                                                  .on('mouseout', function () {
+                                                      $(this.element).css({
+                                                          'fill': '#2f7ed8',
+                                                          'stroke': '#2f7ed8',
+                                                      });
+                                                  })
+                                                  .add();
+                                         // });
+                                          }
+                                      }
+                                  },
+                                  title: {
+                                      text: 'Region Category Percentage Stacked Bar Graph'
+                                  },
+                                  xAxis: {
+                                      categories: regions, // Set regions as X-axis categories
+                                      title: {
+                                          text: 'Region'
+                                      }
+                                  },
+                                  yAxis: {
+                                      min: 0,
+                                      title: {
+                                          text: 'Percentage'
+                                      },
+                                      stackLabels: {
+                                          enabled: true,
+                                          style: {
+                                              fontWeight: 'bold',
+                                              color: (Highcharts.defaultOptions.title.style && Highcharts.defaultOptions.title.style.color) || 'gray'
+                                          }
+                                      }
+                                  },
+                                  tooltip: {
+                                      headerFormat: '<b>{point.x}</b><br/>',
+                                      pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                                  },
+                                  plotOptions: {
+                                      column: {
+                                          stacking: 'normal',
+                                          dataLabels: {
+                                              enabled: true
+                                          }
+                                      }
+                                  },
+                                  series: categories.map(function (category) { // Map categories to series
+                                      return {
+                                          name: category,
+                                          data: regions.map(function (region) { // Map regions to data for each category
+                                              var dataPoint = jsonData.find(function (item) {
+                                                  return item.Region === region && item.Category === category;
+                                              });
+                                              return dataPoint ? dataPoint.Percentage : 0;
+                                          })
+                                      };
+                                  })
+                              });
+                              // console.log(data);
+                          }
+                      });
+                  }
+                  else if ($('#chart_type').val() == 'bydepartment') {
+
+
+                      var departmentValue = $('#department').val().toString();
+                      var departmentArray = departmentValue.split(',').map(function (dept) {
+                          return "'" + dept.trim() + "'";
+                      });
+                      var formattedDepartmentValue = departmentArray.join(',');
+
+                      User.Department = formattedDepartmentValue
+
+                      $.ajax({
+                          type: "GET",
+                          dataType: "json",
+                          //  contentType: "application/json",
+                          data: User,
+                          url: apiURL + 'GetMandayChartDataByDepartment',
+                          success: function (data) {
+
+                              jsonData = data;
+
+                              var departments = [...new Set(jsonData.map(item => item.Department))];
+                              var regions = [...new Set(jsonData.map(item => item.Region))];
+                              var categories = [...new Set(jsonData.map(item => item.Category))];
+                              var series = [];
+
+                              // Loop through each category
+                              categories.forEach(function (category) {
+                                  // Create series data for the current category
+                                  var seriesData = departments.map(function (department) {
+                                      var dataPoint = jsonData.find(item => item.Department === department && item.Category === category);
+                                      return dataPoint ? dataPoint.Percentage : 0;
+                                  });
+
+                                  // Push the series object for the current category
+                                  series.push({
+                                      name: category,
+                                      data: seriesData
+                                  });
+                              });
+                              var option = {
+                                  'stroke-width': 1,
+                                  stroke: '#2f7ed8', // Background color
+                                  fill: '#2f7ed8', // Border color
+                                  r: 2,
+                                  padding: 5,
+                                  style: {
+                                      color: '#FFFFFF' // Text color
+                                  }
+                              };
+                              // Initialize Highcharts chart
+                              Highcharts.chart('container', {
+                                  chart: {
+                                      type: 'column',
+                                      events: {
+                                          load: function () {
+                                              this.renderer.button('Excel Report', this.chartWidth - 100, 40, function () {
+                                                  // Add button click functionality here
+
+                                                  const reshapedData = reshapeDeptData(data);
+                                                  const columns = generateDeptColumns(data);
+                                                  const start_date = $('#s_date').val();
+                                                  const to_date = $('#e_date').val();
+                                                  populateDataTable(reshapedData, columns, start_date, to_date);
+                                                  $('#excelModal').modal('show');
+                                              }, option, option, option)
+                                                  .attr({
+                                                      id: 'excelButton'
+                                                  })
+                                                  .on('mouseover', function () {
+                                                      $(this.element).css({
+                                                          'fill': '#2f7ed8',
+                                                          'stroke': '#2f7ed8',
+                                                      });
+                                                  })
+                                                  .on('mouseout', function () {
+                                                      $(this.element).css({
+                                                          'fill': '#2f7ed8',
+                                                          'stroke': '#2f7ed8',
+                                                      });
+                                                  })
+                                                  .add();
+                                          }
+                                      }
+                                  },
+                                  title: {
+                                      text: 'Department Category Count by Region'
+                                  },
+                                  xAxis: {
+                                      categories: departments.map(department => department + '<br>(' + regions.find(region => jsonData.some(item => item.Department === department && item.Region === region)) + ')'),
+                                      title: {
+                                          text: 'Department (Region)'
+                                      }
+                                  },
+                                  yAxis: {
+                                      min: 0,
+                                      title: {
+                                          text: 'Percentage'
+                                      },
+                                      stackLabels: {
+                                          enabled: true,
+                                          style: {
+                                              fontWeight: 'bold',
+                                              color: (Highcharts.defaultOptions.title.style && Highcharts.defaultOptions.title.style.color) || 'gray'
+                                          }
+                                      }
+                                  },
+                                  legend: {
+                                      reversed: true
+                                  },
+                                  plotOptions: {
+                                      column: {
+                                          stacking: 'normal',
+                                          dataLabels: {
+                                              enabled: true
+                                          }
+                                      }
+                                  },
+                                  series: series
+                                  //series: [{
+                                  //    name: categories[0], // Assuming there are only two categories
+                                  //    data: departments.map(department => {
+                                  //        var dataPoint = jsonData.find(item => item.Department === department && item.Category === categories[0]);
+                                  //        return dataPoint ? dataPoint.Count : 0;
+                                  //    })
+                                  //}, {
+                                  //    name: categories[1], // Assuming there are only two categories
+                                  //    data: departments.map(department => {
+                                  //        var dataPoint = jsonData.find(item => item.Department === department && item.Category === categories[1]);
+                                  //        return dataPoint ? dataPoint.Count : 0;
+            -->
+    <!--    //    })
+        //}]
+        });
+
+        }
+        });
+        } else {
+        console.log('Bymonth');
+        }
+
+        }
+        });
+
+        </script>-->
+
+</body>
+</html>
+<script src="../Manday_JS/Dashboard.js"></script>
+
+

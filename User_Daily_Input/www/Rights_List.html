@@ -1,0 +1,872 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title> User Menu </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">-->
+    <link href="../Manday_CDN/semantic.min.css" rel="stylesheet" />
+
+    <!--Bootstrap CSS-->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+    <link href="../Manday_CDN/bootstrap.min.css" rel="stylesheet" />
+
+    <!--Font Awesome CSS-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">-->
+    <link href="../fontawesome/css/fontawesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../fontawesome/css/solid.min.css">
+
+    <link rel="stylesheet" type="text/css" href="../fontawesome/css/regular.min.css">
+
+    <!--<link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'
+          rel='stylesheet'>-->
+    <!-- <link href="../Manday_CDN/jquery-ui.css" rel="stylesheet" />-->
+    <link href="../jquery-ui/jquery-ui.css" rel="stylesheet" />
+
+
+    <!--Toastr CSS-->
+    <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">-->
+
+    <link href="../Manday_CDN/toastr.min.css" rel="stylesheet" />
+    <link href="../css/LoadingSpinner.css" rel="stylesheet" />
+
+    <!--jQuery library-->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+    <script src="../scripts/jquery-3.6.0.js"></script>
+    <!--Bootstrap JS-->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+    <script src="../Manday_CDN/bootstrap.min.js"></script>
+
+    <!--jQuery DataTables library-->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">-->
+    <link href="../Manday_CDN/jquery.dataTables.css" rel="stylesheet" />
+
+    <!-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>-->
+    <script src="../Manday_CDN/jquery.dataTables.min.js"></script>
+
+    <!--Toastr JS-->
+    <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>-->
+    <script src="../Manday_CDN/toastr.min.js"></script>
+
+    <script src="../scripts/moment.js"></script>
+
+    <script src="../jquery-ui/jquery-ui.min.js"></script>
+
+
+
+
+    <style>
+        body, html {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            /*background-color:honeydew;*/
+        }
+
+        fieldset {
+            width: 500px;
+            align-content: center;
+            border: 2px solid black;
+        }
+
+            fieldset:focus-within {
+                border-color: lightpink;
+            }
+
+        [type=password], input[type=text], input[type=email], .Role, .Company, #active, #active2, #u_active2, #u_active {
+            width: 40%;
+            padding: 10px;
+            margin: 5px 0 22px 0;
+            border: hidden;
+            background: #f0f2f5;
+        }
+
+            [type=password]:focus, input[type=text]:focus, input[type=email]:focus, .Role:focus, .Company:focus, #active:focus, #active2:focus, #u_active2:focus, #u_active:focus {
+                background-color: #f7dee2;
+                outline: none;
+            }
+
+        #btnSubmit, #btnSubmit2, #btnUpdate, #btnUpdate2, #close {
+            background: none;
+            text-decoration: none;
+            color: black;
+            box-shadow: 0px 0px 0px 2px white;
+            border-radius: 3px;
+            padding: 5px 2em;
+            transition: 0.5s;
+            float: none;
+        }
+
+            #btnSubmit:hover, #btnSubmit2:hover, #btnUpdate:hover, #btnUpdate2:hover {
+                background: #8aed96;
+                color: black;
+                transition: 0.5s;
+            }
+
+            #close:hover {
+                background: #ed6767;
+                color: black;
+                transition: 0.5s;
+            }
+
+        #btnRegister {
+            background-color: #f6f79f;
+            color: black;
+            font: bold 35px;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            /*padding: 5px;*/
+        }
+
+
+        .dataTables_wrapper {
+            overflow-x: auto; /* Add horizontal scrollbar when content overflows */
+        }
+    </style>
+
+</head>
+<body>
+    <!--<div align="right">
+        <br /><button class="ui icon button blue label" id="back" value="1">
+            <i align="left" class="icon arrow left"></i> Back
+        </button>
+    </div>-->
+    <div class="ui segment">
+        <div class="ui teal top attached inverted tabular menu" style="width: 15%; height: 40px; font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+            <!--<div class="ui menu top" style="width:30%; font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">-->
+            <a class="active item" data-tab="userRegistration" style="width:100%"> Registration </a>
+            <!--<a class="item" data-tab="menu" style="width:34%"> <i class="large blue list icon"></i> Menu </a>-->
+            <!--<a class="item" data-tab="userPermissions" style="width:50%"> <i class="large pink check key icon"></i> Permissions </a>-->
+        </div>
+
+        <!--<div class="ui bottom attached active tab segment" data-tab="user_registration">-->
+        <div class="ui bottom attached active tab segment" data-tab="userRegistration">
+            <br />
+            <button type="button" id="btnRegister" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
+               Register
+            </button> <br /> <br />
+
+            <div class="modal" id="registerModal" tabindex="-1" style="text-align:center">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color: #f9fac6">
+                            <h5 class="modal-title" style="font-size:22px"> Register </h5>
+                            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                            <span aria-hidden="true">&times;</span>-->
+                        </div>
+                        <div class="modal-body" style="background-color: #fcfcfb">
+                            <form>
+                                <div class="two fields">
+                                    <span class="top aligned left aligned">
+                                      
+                                        <strong> ACCOUNT: </strong> <input type="text" class="text" id="account" >
+
+                                    </span><br />
+                                
+
+                                    
+                                    <div class="top aligned left aligned">
+                                        <strong> RIGHT: </strong>
+                                        <!--<input type="text"  id="right" onkeypress="return ">-->
+                                        <select class="Company" name="company" id="right">
+                                            <option value=""> Select Right </option>
+                                            <option value="PMO"> PMO </option>
+                                            <option value="Head/Sum"> Head/Sum </option>
+
+                                        </select>
+                                    </div>
+
+
+                                    <div class="top aligned left aligned">
+                                        <strong> ASSIGNED REGION: </strong> &nbsp;
+                                        <select class="Company" name="company" id="region">
+                                            <option value=""> Select region </option>
+                                            <option value="APC">APC</option>
+                                            <option value="APH">APH</option>
+                                            <option value="APE">APE</option>
+                                            <option value="GROUP">GROUP</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="top aligned left aligned">
+                                        <strong> ASSIGNED DEPARTMENT: </strong>
+                                        <select class="Role" id="department">
+                                            <option value="">Select Department</option>
+                                        </select>
+                                    </div>
+
+                                    <!--<div class="top aligned left aligned">
+                                        <strong> ROLE: </strong>
+                                        <select class="Role" id="role">
+                                            <option value="">Select Role</option>
+                                            <option value="USER">USER</option>
+                                            <option value="USER_ADMIN">USER_ADMIN</option>
+                                            <option value="ADMIN">ADMIN</option>
+                                        </select>
+                                    </div>-->
+                                    
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="btnSubmit" class="btn btn-primary"> SUBMIT </button> &nbsp;
+                            <button type="button" id="close_reg" class="btn btn-secondary " data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal" id="updateModal" tabindex="-1" style="text-align:center">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color: #C8A2C8">
+                            <h5 class="modal-title" style="font-size:22px"> Update Rights </h5>
+                            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                            <span aria-hidden="true">&times;</span>-->
+                        </div>
+                        <div class="modal-body" style="background-color: #fcfcfb">
+                            <form>
+                                <div class="two fields">
+                                    <span class="top aligned left aligned">
+                                        <strong> ACCOUNT: </strong> <input type="text" class="text" id="M_account" disabled>
+                                    </span><br />
+
+                                    <span class="top aligned left aligned">
+                                        <strong> RIGHT: </strong>
+                                        <!--<input type="text"  id="right" onkeypress="return ">-->
+                                        <select class="Company" name="company" id="M_right">
+                                            <option value=""> Select Right </option>
+                                            <option value="PMO"> PMO </option>
+                                            <option value="Head/Sum"> Head/Sum </option>
+
+                                        </select>
+                                    </span><br />
+
+
+                                    <span class="top aligned left aligned">
+                                        <strong> ASSIGNED REGION: </strong> &nbsp;
+                                        <select class="Company" name="company" id="M_region">
+                                            <option value=""> Select region </option>
+                                            <option value="APC">APC</option>
+                                            <option value="APH">APH</option>
+                                            <option value="APE">APE</option>
+                                            <option value="GROUP">GROUP</option>
+
+                                        </select>
+                                    </span><br />
+                                    <span class="top aligned left aligned">
+                                        <strong> ASSIGNED DEPARTMENT: </strong>
+                                        <select class="Role" id="M_department">
+                                            <option value="">Select Department</option>
+                                        </select>
+                                    </span><br />
+
+                                    <!--<span class="top aligned left aligned">
+                                        <strong> ROLE: </strong>
+                                        <select class="Role" id="M_role">
+                                            <option value="">Select Role</option>
+                                            <option value="USER">USER</option>
+                                            <option value="USER_ADMIN">USER_ADMIN</option>
+                                            <option value="ADMIN">ADMIN</option>
+                                        </select>
+                                    </span><br />-->
+
+                                    <span class="top aligned left aligned">
+                                        <strong> REMARK: </strong>
+                                        <input type="text" class="text" id="M_remark">
+                                        <!--<input type="text" placeholder="Department" id="department" onkeypress="return ">-->
+                                    </span><br />
+                                    <!--<span class="top aligned left aligned">
+        <strong> User Role: </strong> &nbsp;
+        <select class="Role" name="role" id="role">
+            <option value="-1"> Role </option>
+            <option value="User"> User </option>
+            <option value="User_Admin"> User_Admin </option>
+            <option value="Admin"> Admin </option>
+        </select>
+    </span><br />
+
+
+    <span class="top aligned left aligned">
+        <strong> ACTIVE : </strong>
+        <select id="active">
+            <option value="-1"> Status </option>
+            <option value="Y"> Active </option>
+            <option value="N"> Inactive </option>
+        </select>
+    </span><br />-->
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="btnUpdate" class="btn btn-primary"> Update </button> &nbsp;
+                            <button type="button" id="close_updt" class="btn btn-secondary " data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <table id="RegistrationGrid" bgcolor="" class="display nowrap" style="width: 100%; border-radius: 10px">
+                    <thead style="background-color: #a9b2bb ">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">ACCOUNT</th>
+                            <th scope="col">RIGHT</th>
+                            <th scope="col">REGION</th>
+                            <th scope="col">DEPARTMENT</th>
+                            <!--<th scope="col">ROLE</th>-->
+                            <th scope="col">REMARK</th>
+
+                            <th scope="col">Actions</th>
+
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+
+        </div>
+
+       
+
+
+        <div class="ui tab" data-tab="userPermissions">
+            <br />
+            <div style="max-width: 100%; overflow-x: auto;" class="responsive">
+                <table id="UserGrid" bgcolor=#fcf9fe class="display nowrap" style="width: 100%; border-radius: 10px">
+                    <thead style="background-color: #e9cffa">
+                        <tr>
+                            <th scope="col">USER_NAME</th>
+                            <th scope="col">EMP_NAME</th>
+                            <th scope="col">EMP_NO</th>
+                            <th scope="col">DEPT_NO</th>
+                            <th scope="col">DEPT_NAME</th>
+                            <th scope="col">USERROLE</th>
+                            <th scope="col">COMPANY</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <br />
+
+            <button class="btn btn-primary" id="saveBtn">Save Modifications</button>
+            <div class="container" style="max-width: 100%; overflow-x: auto;" id="DivMenuGrid">
+                <div class="column">
+                    <table id="MenuGrid" bgcolor=#fcf9fe class="table table-bordered table-striped table-hover" style="width: 100%; border-radius: 10px">
+                        <thead style="background-color: #e9cffa">
+                            <tr>
+                                <th> </th>
+                                <th scope="col">NAME</th>
+                                <th scope="col">CODE</th>
+                                <th scope="col">STATUS</th>
+                                <th scope="col">NAME SHOW</th>
+                                <th scope="col">TYPE</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <input type="hidden" id="userid" />  <!--It is must for all pages-->
+    <!--<script src="../semantic/dist/semantic.min.js"></script>-->
+</body>
+</html>
+<script src="../Manday_JS/Rights_List.js"></script>
+
+<!--<script type="text/javascript">
+    $('.top.menu .item').tab();
+    var apiURL = 'http://localhost:53943/api/apcnote/';
+   //   var apiURL = 'http://10.3.0.70:9001/api/apcnote/';
+  //  var apiURL = 'http://10.3.0.208:9001/api/apcnote/';
+
+    var datatableVariable = '';
+    var departmentOptions = {
+        'APC': ['IT-Backoffice', 'MES', 'IT_SW Probation', 'Hardware'],
+        'APH': ['HR&OA部', '数据部'],
+        'APE': ['BackOffice','Hardware', 'IT-SW', 'IT-HW'],
+        'GROUP': ['PMO']
+    };
+    $(document).ready(function () {
+        Users_details();
+
+
+        //$('#region').change(function () {
+        //    var selectedRegion = $(this).val();
+        //    var departments = departmentOptions[selectedRegion] || [];
+
+        //    // Clear existing options
+        //    $('#department').empty();
+
+        //    // Add default option
+        //    $('#department').append($('<option>', {
+        //        value: '',
+        //        text: 'Select Department'
+        //    }));
+
+        //    // Add options for the selected region
+        //    departments.forEach(function (department) {
+        //        $('#department').append($('<option>', {
+        //            value: department,
+        //            text: department
+        //        }));
+        //    });
+
+           
+        //});
+
+
+        //var countries = [
+        //    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+        //    // Add more countries as needed
+        //];
+
+        //$("#account").autocomplete({
+        //    source: countries
+        //});
+
+
+
+       
+
+       
+    });
+    function clearModalFields() {
+        $('#M_account').val('');
+        $('#M_right').val('');
+        $('#M_region').val('');
+        // $('#M_department').val('');
+        $('#M_department').empty();
+        $('#M_department').append($('<option>', {
+            value: '',
+            text: 'Select Department'
+        }));
+      //  $('#M_role').val('');
+        $('#M_remark').val('');
+    }
+
+    
+    $('#registerModal').on('hidden.bs.modal', function () {
+        
+        // Clear all input fields when modal is closed
+        clear_input();
+    });
+    $('#updateModal').on('hidden.bs.modal', function () {
+
+        // Clear all input fields when modal is closed
+        clearModalFields();
+    });
+
+    $('#region').change(function () {
+
+
+        var selectedRegion = $(this).val();
+
+        var region = {
+            Region: selectedRegion
+        };
+        $.post(apiURL + 'GetDepartmentsByRegion', region, function (response) {
+
+
+            // Clear existing options
+            $('#department').empty();
+
+            // Add default option
+            $('#department').append($('<option>', {
+                value: '',
+                text: 'Select Department'
+            }));
+            
+            $.each(response, function (index, department) {
+
+                $('#department').append($('<option>', {
+                    value: department,
+                    text: department
+                }));
+
+            });
+
+
+        }).fail(function (jqxhr, settings, ex) {
+            $(".dimmer").hide();
+            alert("error: " + ex);
+        });
+
+
+
+
+        //   }
+
+
+    });
+
+    $('#M_region').change(function () {
+
+
+        var selectedRegion = $(this).val();
+
+
+       
+        var region = {
+            Region: selectedRegion
+        };
+        $.post(apiURL + 'GetDepartmentsByRegion', region, function (response) {
+
+
+            // Clear existing options
+            $('#M_department').empty();
+
+            // Add default option
+            $('#M_department').append($('<option>', {
+                value: '',
+                text: 'Select Department'
+            }));
+           
+            $.each(response, function (index, department) {
+
+                $('#M_department').append($('<option>', {
+                    value: department,
+                    text: department
+                }));
+
+            });
+
+
+        }).fail(function (jqxhr, settings, ex) {
+            $(".dimmer").hide();
+            alert("error: " + ex);
+        });
+
+
+
+
+        //   }
+
+
+    });
+    
+    function Users_details() {
+        
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: '',
+            url: apiURL + 'Get_Rights_details',
+            success: function (data) {
+                datatableVariable = $('#RegistrationGrid').DataTable({
+                    "destroy": "true",
+                    "dataSrc": "",
+                    data: data,
+                    columns: [
+
+
+                       /* { 'data': 'Id' },*/
+                        {
+                            data: null, title: 'S.No.', visible: true, render: function (data, type, row, meta) {
+                                return meta.row + 1;
+                            }
+                        },
+                        { 'data': 'Account' },
+                        { 'data': 'Role_right' },
+                        { 'data': 'Assigned_region' },
+                        { 'data': 'Assigned_dept' },
+                       /* { 'data': 'Role' },*/
+                      
+                        { 'data': 'Remark' },
+                        {
+                            data: null,
+                            render: function (data, type, row) {
+                                return '<div class="action-group">' +
+                                    '<button class="editBtn btn btn-link" data-id="' + row.Id + '"><i class="fas fa-pencil-alt"></i></button>' +
+                                    '<button class="deleteBtn btn btn-link" data-id="' + row.Id + '"><i class="fas fa-trash-alt"></i></button>' +
+                                    '</div>';
+                            },
+
+                            orderable: false,
+                            searchable: false
+                        }
+
+                    ],
+                    dom: 'Bfrtip',
+                    buttons:
+                        [
+                            {
+                                extend: 'excelHtml5',
+                                title: 'Excel',
+                                text: 'Export to excel'
+
+                            }
+                        ]
+                });
+
+            }
+
+        });
+    }
+
+
+    $('#btnSubmit').click(function () {
+        
+        if ($('#account').val() == '') {
+            alert('Enter Account number');
+        } else if ($('#right').val() == '') {
+            alert('Select Role Right');
+
+        } else if ($('#role').val() == '') {
+            alert('Select Role');
+        }
+        else {
+            var insert_role = {};
+            insert_role.Account = $('#account').val();
+            insert_role.Role_right = $('#right').val();
+            insert_role.Assigned_region = $('#region').val();
+            insert_role.Assigned_dept = $('#department').val();
+          //  insert_role.Role = $('#role').val();
+
+            $.post(apiURL + 'Insert_Rights_details', insert_role, function (response) {
+                
+                console.log(response);
+                if (response == "Success") {
+                      toastr.success('User Added Successfully!', 'Success', { timeOut: 3000 });
+                    //alert('User Added Successfully');
+                    $('#registerModal').modal('hide');
+                    Users_details();
+                    clear_input();
+                } else if (response == 'registered') {
+                    toastr.warning('User Already exists!', 'WARNING', { timeOut: 3000 });
+                }
+                else if (response == "No_Account") {
+                    toastr.warning('No Account found with this username!', 'WARNING', { timeOut: 3000 });
+                }
+                else {
+                    alert("somthing error");
+                }
+
+            }).fail(function (jqxhr, settings, ex) {
+                $(".dimmer").hide();
+                alert("error: " + ex);
+            });
+        }
+    });
+
+
+    function clear_input() {
+        $('#account').val('');
+        $('#right').val('');
+        $('#region').val('');
+        $('#department').val('');
+        $('#role').val('');
+    }
+
+
+    $('#RegistrationGrid').on('click', '.editBtn', function () {
+        
+        rowData = datatableVariable.row($(this).closest('tr')).data();
+        console.log(rowData);
+        populateEditForm(rowData);
+        $('#updateModal').modal('show');
+    });
+
+    function populateEditForm(rowData) {
+        
+
+        
+        $('#M_account').val(rowData.Account);
+        $('#M_right').val(rowData.Role_right);
+        //  $('#department').val(rowData.Department);
+        $('#M_region').val(rowData.Assigned_region);
+
+        var region_modal = {
+            Region: rowData.Assigned_region
+        };
+        $.post(apiURL + 'GetDepartmentsByRegion', region_modal, function (response) {
+
+            
+            // Clear existing options
+          //  $('#M_department').empty();
+
+            // Add default option
+            //$('#M_department').append($('<option>', {
+            //    value: '',
+            //    text: 'Select Department'
+            //}));
+            //$('#department,#t_department').append($('<option>', {
+            //    value: 'ALL',
+            //    text: 'ALL'
+            //}));
+            $.each(response, function (index, department) {
+
+                $('#M_department').append($('<option>', {
+                    value: department,
+                    text: department
+                }));
+
+            });
+            $('#M_department').val(rowData.Assigned_dept);
+
+        }).fail(function (jqxhr, settings, ex) {
+            $(".dimmer").hide();
+            alert("error: " + ex);
+        });
+
+
+
+        //var departments = departmentOptions[rowData.Assigned_region] || [];
+        //$('#M_department').empty().append($('<option>', {
+        //    value: '',
+        //    text: 'Select Department'
+        //}));
+        //departments.forEach(function (department) {
+        //    $('#M_department').append($('<option>', {
+        //        value: department,
+        //        text: department
+        //    }));
+        //});
+       
+        $('#M_role').val(rowData.Role);
+     
+        $('#M_remark').val(rowData.Remark);
+
+
+    }
+
+    $('#btnUpdate').click(function () {
+        
+        if ($('#M_account').val() == '') {
+            alert('Enter Account number');
+        } else if ($('#M_right').val() == '') {
+            alert('Select Role Right');
+
+        } else {
+            var update_role = {};
+            update_role.Account = $('#M_account').val();
+            update_role.Role_right = $('#M_right').val();
+            update_role.Assigned_region = $('#M_region').val();
+            update_role.Assigned_dept = $('#M_department').val();
+            update_role.Id = rowData.Id;
+            update_role.Remark = $('#M_remark').val();
+            update_role.Role = $('#M_role').val();
+
+            $.post(apiURL + 'Update_Rights_details', update_role, function (response) {
+                
+                console.log(response);
+                if (response == "Success") {
+                    toastr.success('User Rights Updated Successfully!', 'Success', { timeOut: 3000 });
+                  //  alert('User Rights Updated Successfully');
+                    $('#updateModal').modal('hide');
+                    Users_details();
+                } else if (response == 'registered') {
+                    toastr.warning('Already User have same Rights !', 'Warning', { timeOut: 3000 });
+                    $('#updateModal').modal('hide');
+                }
+                else {
+                    alert("somthing error");
+                    $('#updateModal').modal('hide');
+                }
+
+            }).fail(function (jqxhr, settings, ex) {
+                $(".dimmer").hide();
+                alert("error: " + ex);
+            });
+        }
+    });
+
+
+
+    $('#RegistrationGrid').on('click', '.deleteBtn', function () {
+        
+        rowData = datatableVariable.row($(this).closest('tr')).data();
+        
+
+        var delete_info = {};
+        rowData = datatableVariable.row($(this).closest('tr')).data();
+
+        delete_info.Id = rowData.Id;
+        delete_info.Account = rowData.Account;
+        var confirmDelete = confirm("Are you sure you want to delete this record?");
+        if (confirmDelete) {
+            $.post(apiURL + 'Delete_Rights', delete_info, function (response) {
+
+
+                if (response == "Success") {
+                    toastr.success('Record Deleted!', 'Deleted', { timeOut: 3000 });
+
+                    Users_details();
+                } else {
+                    alert("somthing error");
+                }
+
+            }).fail(function (jqxhr, settings, ex) {
+                $(".dimmer").hide();
+                alert("error: " + ex);
+            });
+        }
+    });
+  
+
+    function fetchAccounts() {
+        
+        $.ajax({
+            url: apiURL + 'Get_IT_member_details', // Replace with your API endpoint URL
+            method: 'GET',
+            success: function (data) {
+                
+               
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    // Function to initialize autocomplete with fetched data
+    //function initializeAutocomplete(accounts) {
+    //    $("#txtName").autocomplete({
+    //        source: accounts,
+    //        minLength: 0 // Show suggestions even when input is empty
+    //    }).focus(function () {
+    //        $(this).autocomplete("search");
+    //    });
+    //}
+
+    //$.ajax({
+    //    url: 'api/Employee/GetEmployees', // Replace with your Web API endpoint URL
+    //    method: 'GET',
+    //    success: function (data) {
+    //        initializeDropdown(data);
+    //    },
+    //    error: function (xhr, status, error) {
+    //        console.error(error);
+    //    }
+    //});
+
+    function initializeDropdown(accountsData) {
+        
+        //$('#accountDropdown').dropdown({
+        //    values: employeeData.map(function (employee) {
+        //        return { name: employee.EmployeeName, value: employee.Account };
+        //    }),
+        //    onChange: function (value, text, $selectedItem) {
+        //        // Handle dropdown change event if needed
+        //    }
+        //});
+        $('#accountInput').autocomplete({
+            source: accountsData.map(function (account) {
+                return { label: account.Account, value: account.Account };
+            }),
+            select: function (event, ui) {
+                // Handle selection event if needed
+                console.log('Selected barcode:', ui.item.value);
+            }
+        });
+    }
+</script>-->
